@@ -145,8 +145,19 @@ local M = function(_, opts)
         -- try to load the 'custom.servers.<mason_name>' module
         local ok, custom_config = pcall(require, 'custom.servers.' .. mason_name)
 
+        -- if has `cmp`, use cmp capabilities, otherwise use vim's default
+        local capabilities = nil;
+
+        if utils.is_available('cmp-nvim-lsp') then
+            require('lazy').load({ plugins = { 'cmp-nvim-lsp' } })
+            capabilities = require('cmp_nvim_lsp').default_capabilities()
+            vim.notify('cmp-nvim-lsp is available')
+        else
+            capabilities = vim.lsp.protocol.make_client_capabilities()
+        end
+
         local config = {
-            capabilities = vim.lsp.protocol.make_client_capabilities(),
+            capabilities = capabilities
         }
 
         if ok then

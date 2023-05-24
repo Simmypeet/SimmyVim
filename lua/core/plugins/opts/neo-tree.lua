@@ -1,4 +1,6 @@
 local M = {
+    close_if_last_window = true,
+
     window = {
         mappings = {
             ['l'] = 'open',

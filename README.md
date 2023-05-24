@@ -6,4 +6,4 @@ SimmyVim is my personal Neovim configuration, transforming the barebone Neovim i
 - Integrated terminal
 - Syntax highlighting
 - Language server protocol
--  Fuzzy finder
+- Fuzzy finder

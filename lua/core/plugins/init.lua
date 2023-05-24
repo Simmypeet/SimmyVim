@@ -34,12 +34,6 @@ local M = {
     {
         "folke/tokyonight.nvim",
         lazy = false,
-        opts = {
-            style = 'night'
-        },
-        init = function()
-            vim.cmd [[colorscheme tokyonight]]
-        end,
         config = function(_, opts)
             require('tokyonight').setup(opts)
         end,
@@ -225,7 +219,19 @@ local M = {
         keys = require('core.plugins.keys.toggleterm'),
         opts = require('core.plugins.opts.toggleterm'),
         config = require('core.plugins.config.toggleterm'),
-    }
+    },
+
+    -- symbol outline
+    {
+        "utilyre/barbecue.nvim",
+        -- branch = "fix/E36",
+        event = { "BufReadPost" },
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = require('core.plugins.opts.barbecue'),
+    },
 }
 
 return M

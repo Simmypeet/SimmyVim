@@ -21,6 +21,16 @@ local M = {
             require("better_escape").setup()
         end,
     },
+
+    -- monokai pro
+    {
+        'loctvl842/monokai-pro.nvim',
+        lazy = false,
+        config = function(_, opts)
+            require('monokai-pro').setup(opts)
+            vim.cmd('colorscheme monokai-pro')
+        end
+    }
 }
 
 return M
