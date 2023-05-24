@@ -29,21 +29,6 @@ local M = function()
                 { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
             },
             lualine_x = {
-                -- stylua: ignore
-                {
-                    function() return require("noice").api.status.command.get() end,
-                    cond = function()
-                        return package.loaded["noice"] and
-                            require("noice").api.status.command.has()
-                    end,
-                    color = util.fg("Statement"),
-                },
-                -- stylua: ignore
-                {
-                    function() return require("noice").api.status.mode.get() end,
-                    cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-                    color = util.fg("Constant"),
-                },
                 {
                     require("lazy.status").updates,
                     cond = require("lazy.status").has_updates,

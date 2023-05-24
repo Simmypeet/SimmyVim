@@ -116,14 +116,6 @@ local M = {
         opts = require('core.plugins.opts.lualine'),
     },
 
-    -- noicer ui
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        opts = require('core.plugins.opts.noice'),
-        keys = require('core.plugins.keys.noice'),
-    },
-
     -- lsp symbol navigation for lualine
     {
         "SmiteshP/nvim-navic",
@@ -157,7 +149,7 @@ local M = {
     -- auto pairs
     {
         "windwp/nvim-autopairs",
-        event = { 'InsertEnter' },
+        lazy = false,
         opts = require('core.plugins.opts.nvim-autopairs'),
         config = require('core.plugins.config.nvim-autopairs')
     },
@@ -165,7 +157,7 @@ local M = {
     -- completion suggestions
     {
         'hrsh7th/nvim-cmp',
-        event = { 'InsertEnter' },
+        lazy = false,
         dependencies = {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',

@@ -151,7 +151,6 @@ local M = function(_, opts)
         if utils.is_available('cmp-nvim-lsp') then
             require('lazy').load({ plugins = { 'cmp-nvim-lsp' } })
             capabilities = require('cmp_nvim_lsp').default_capabilities()
-            vim.notify('cmp-nvim-lsp is available')
         else
             capabilities = vim.lsp.protocol.make_client_capabilities()
         end
