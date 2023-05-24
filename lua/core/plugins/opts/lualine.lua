@@ -1,5 +1,6 @@
 local M = function()
     local util = require('core.utils')
+
     return {
         options = {
             theme = "auto",

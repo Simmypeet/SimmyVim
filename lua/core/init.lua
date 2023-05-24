@@ -3,6 +3,12 @@ local M = {}
 local utils = require('core.utils')
 
 M.initialize_options = function()
+    vim.opt.shortmess:append({ W = true, I = true, c = true })
+    if vim.fn.has("nvim-0.9.0") == 1 then
+        vim.opt.splitkeep = "screen"
+        vim.opt.shortmess:append({ C = true })
+    end
+
     local default_options = require('core.options')
     local user_options = utils.load_options('custom.options')
 

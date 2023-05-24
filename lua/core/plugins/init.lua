@@ -172,9 +172,7 @@ local M = {
     {
         'petertriho/nvim-scrollbar',
         event = { 'BufRead' },
-        config = function()
-            require('scrollbar').setup({})
-        end
+        opts = require('core.plugins.opts.nvim-scrollbar'),
     },
 
     -- git

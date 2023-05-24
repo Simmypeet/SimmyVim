@@ -9,7 +9,7 @@ local M = {
         -- stylua: ignore
         right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
         diagnostics = "nvim_lsp",
-        always_show_bufferline = true,
+        always_show_bufferline = false,
         diagnostics_indicator = function(count, _, _, _)
             if count > 9 then
                 return "+9"
