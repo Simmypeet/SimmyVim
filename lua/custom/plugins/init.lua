@@ -26,10 +26,22 @@ local M = {
     {
         'loctvl842/monokai-pro.nvim',
         lazy = false,
-        config = function(_, opts)
-            require('monokai-pro').setup(opts)
-            vim.cmd('colorscheme monokai-pro')
-        end
+        config = require('custom.plugins.opts.monokai-pro'),
+    },
+
+    -- catppuccin color theme
+    {
+        'catppuccin/nvim',
+        name = 'catppuccin',
+        lazy = false,
+        opts = require('custom.plugins.opts.catppuccin'),
+        config = require('custom.plugins.config.catppuccin')
+    },
+
+    {
+        'Mofiqul/vscode.nvim',
+        lazy = false,
+        config = require('custom.plugins.config.vscode')
     }
 }
 
