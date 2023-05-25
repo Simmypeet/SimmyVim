@@ -1,4 +1,4 @@
-local M = function(opts)
+return function(opts)
     require('rust-tools').setup({
         tools = {
             inlay_hints = {
@@ -7,9 +7,15 @@ local M = function(opts)
         },
 
         server = {
-            on_attach = opts.on_attach,
+            on_attach = function(client, buffer)
+                -- disable semantic tokens for rust-analyzer. It has very poor performance on large files
+                -- if client.server_capabilities.semanticTokensProvider ~= nil then
+                -- client.server_capabilities.semanticTokensProvider = nil
+                -- end
+            end,
             capabilities = opts.capabilities,
-            handlers = opts.handlers,
+            root_dir = opts.root_dir,
+
             settings = {
                 ['rust-analyzer'] = {
                     checkOnSave = {
@@ -23,5 +29,3 @@ local M = function(opts)
         },
     })
 end
-
-return M

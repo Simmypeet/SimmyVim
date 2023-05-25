@@ -135,6 +135,7 @@ local M = function(_, opts)
 
     local installed_servers = registry.get_installed_package_names()
 
+
     for _, mason_name in pairs(installed_servers) do
         local lspconfig_name = mappings.mason_to_lspconfig[mason_name]
 
@@ -156,7 +157,11 @@ local M = function(_, opts)
         end
 
         local config = {
-            capabilities = capabilities
+            capabilities = capabilities,
+            -- only allow root_dir to be the same as cwd
+            root_dir = function(fname)
+                return vim.loop.cwd()
+            end,
         }
 
         if ok then
@@ -165,14 +170,12 @@ local M = function(_, opts)
             if type(custom_config) == 'table' then
                 config = vim.tbl_deep_extend('force', config, custom_config)
             elseif type(custom_config) == 'function' then
-                config = custom_config(config)
+                custom_config(config)
                 goto continue
             end
         end
 
-        if lspconfig_name then
-            nvim_lspconfig[lspconfig_name].setup(config)
-        end
+        nvim_lspconfig[lspconfig_name].setup(config)
 
         ::continue::
     end
