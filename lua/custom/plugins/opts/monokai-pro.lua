@@ -1,5 +1,3 @@
-local M = function(_, opts)
-    require('monokai-pro').setup(opts)
-end
+local M = {}
 
 return M

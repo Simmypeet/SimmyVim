@@ -26,7 +26,8 @@ local M = {
     {
         'loctvl842/monokai-pro.nvim',
         lazy = false,
-        config = require('custom.plugins.opts.monokai-pro'),
+        opts = require('custom.plugins.opts.monokai-pro'),
+        config = require('custom.plugins.config.monokai-pro'),
     },
 
     -- catppuccin color theme
