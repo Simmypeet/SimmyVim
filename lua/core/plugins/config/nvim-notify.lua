@@ -1,8 +1,8 @@
-local M = function()
+local M = function(_, opts)
     -- Overriding vim.notify with fancy notify if fancy notify exists
     local notify = require("notify")
     vim.notify = notify
-    notify.setup()
+    notify.setup(opts)
 end
 
 return M
