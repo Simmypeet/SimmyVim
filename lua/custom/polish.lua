@@ -1,7 +1,9 @@
 vim.opt.guifont = "Iosevka Nerd Font:h12"
 
-vim.cmd [[colorscheme tokyonight-night]]
+-- setup must be called before loading
+vim.cmd("colorscheme catppuccin")
 
 if vim.g.neovide then
     vim.g.neovide_fullscreen = true
 end
+

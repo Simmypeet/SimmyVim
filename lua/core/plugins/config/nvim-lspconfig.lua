@@ -8,6 +8,7 @@ local M = function(_, opts)
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
     end
 
+    vim.cmd(':map M')
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
     utils.lsp_on_attach(function(client, buffer)

@@ -16,28 +16,19 @@ local M = {
         end,
     },
 
-    -- monokai pro
+    -- rust-tools
     {
-        'loctvl842/monokai-pro.nvim',
-        lazy = false,
-        opts = require('custom.plugins.opts.monokai-pro'),
-        config = require('custom.plugins.config.monokai-pro'),
+        "simrat39/rust-tools.nvim",
+        ft = { "rust" },
     },
 
-    -- catppuccin color theme
+    -- lsp signature
     {
-        'catppuccin/nvim',
-        name = 'catppuccin',
-        lazy = false,
-        opts = require('custom.plugins.opts.catppuccin'),
-        config = require('custom.plugins.config.catppuccin')
-    },
-
-    -- gruvbox material
-    {
-        'sainnhe/gruvbox-material',
-        name = 'gruvbox-material',
-        lazy = false,
+        'ray-x/lsp_signature.nvim',
+        evnt = "InsertEnter",
+        config = function()
+            require('lsp_signature').setup()
+        end
     },
 }
 

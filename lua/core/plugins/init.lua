@@ -30,15 +30,6 @@ local M = {
         config = require('core.plugins.config.nvim-treesitter')
     },
 
-    -- tokyo night colorscheme
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        config = function(_, opts)
-            require('tokyonight').setup(opts)
-        end,
-    },
-
     -- indent guides for Neovim
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -46,13 +37,12 @@ local M = {
         opts = require('core.plugins.opts.indent-blankline'),
     },
 
-    -- better notfication ui
     {
         "rcarriga/nvim-notify",
-        lazy = false,
+        event = "VeryLazy",
         keys = require('core.plugins.keys.nvim-notify'),
         opts = require('core.plugins.opts.nvim-notify'),
-        config = require('core.plugins.config.nvim-notify'),
+        config = require('core.plugins.config.nvim-notify')
     },
 
     -- telescope fuzzy finder
@@ -91,7 +81,6 @@ local M = {
         dependencies = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-            { "folke/neodev.nvim", opts = {} },
             'hrsh7th/nvim-cmp',
         },
         opts = require('core.plugins.opts.nvim-lspconfig'),
@@ -212,6 +201,12 @@ local M = {
         },
         opts = require('core.plugins.opts.barbecue'),
     },
+
+    -- base 46 colors
+    {
+        'Simmypeet/base46-colors',
+        lazy = false,
+    }
 }
 
 return M
