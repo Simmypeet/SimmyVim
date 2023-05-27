@@ -2,7 +2,7 @@ local M = {
     options = {
         separator_style = "slant",
         indicator = {
-            style = "underline",
+            style = "icon",
         },
         -- stylua: ignore
         close_command = function(n) require("mini.bufremove").delete(n, false) end,

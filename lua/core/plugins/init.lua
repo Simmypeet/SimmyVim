@@ -71,33 +71,15 @@ local M = {
     {
         'williamboman/mason.nvim',
         version = "^1",
-        build = ':MasonUpdate',
-        cmd = {
-            "Mason",
-            "MasonInstall",
-            "MasonInstallAll",
-            "MasonUninstall",
-            "MasonUninstallAll",
-            "MasonLog"
-        },
-        config = function()
-            require('mason').setup({
-                ensure_installed = {
-                    'lua-language-server'
-                }
-            })
-        end
+        cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+        opts = require('core.plugins.opts.mason'),
+        config = require('core.plugins.config.mason')
     },
 
     -- mason lsp config
     {
         'williamboman/mason-lspconfig.nvim',
-        event = 'BufReadPre',
         version = "^1.1",
-        dependencies = {
-            'neovim/nvim-lspconfig',
-            'williamboman/mason.nvim'
-        },
         config = require('core.plugins.config.mason-lspconfig')
     },
 
@@ -105,6 +87,13 @@ local M = {
     {
         'neovim/nvim-lspconfig',
         commit = '8356319af6e8012a5797b647e946b377d1ba3d9c',
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+            { "folke/neodev.nvim", opts = {} },
+            'hrsh7th/nvim-cmp',
+        },
         opts = require('core.plugins.opts.nvim-lspconfig'),
         config = require('core.plugins.config.nvim-lspconfig')
     },
@@ -146,13 +135,6 @@ local M = {
         keys = require('core.plugins.keys.mini-bufremove'),
     },
 
-    -- auto pairs
-    {
-        "windwp/nvim-autopairs",
-        lazy = false,
-        opts = require('core.plugins.opts.nvim-autopairs'),
-        config = require('core.plugins.config.nvim-autopairs')
-    },
 
     -- completion suggestions
     {
@@ -163,6 +145,14 @@ local M = {
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lsp',
             'L3MON4D3/LuaSnip',
+
+            -- auto pairs
+            {
+                "windwp/nvim-autopairs",
+                lazy = false,
+                opts = require('core.plugins.opts.nvim-autopairs'),
+                config = require('core.plugins.config.nvim-autopairs')
+            },
         },
         opts = require('core.plugins.opts.nvim-cmp'),
         config = require('core.plugins.config.nvim-cmp')

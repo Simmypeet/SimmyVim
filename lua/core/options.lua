@@ -15,6 +15,7 @@ M.vim = {
         ignorecase = true,      -- Ignore case
         inccommand = "nosplit", -- preview incremental substitute
         laststatus = 0,
+        swapfile = true,
         list = true,            -- Show some invisible characters (tabs...
         mouse = "a",            -- Enable mouse mode
         number = true,          -- Print line number
@@ -38,6 +39,7 @@ M.vim = {
         tabstop = 4,            -- Number of spaces tabs count for
         termguicolors = true,   -- True color support
         timeoutlen = 300,
+        fillchars = { eob = " " },
         undofile = true,
         undolevels = 10000,
         updatetime = 200,               -- Save swap file and trigger CursorHold

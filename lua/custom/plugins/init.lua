@@ -7,16 +7,10 @@ local M = {
         config = require('custom.plugins.config.copilot')
     },
 
-    -- rust-tools
-    {
-        "simrat39/rust-tools.nvim",
-        ft = { "rust" },
-    },
-
     -- better escaping shortcuts
     {
         "max397574/better-escape.nvim",
-        event = "InsertEnter",
+        event = 'InsertEnter',
         config = function()
             require("better_escape").setup()
         end,
@@ -39,11 +33,12 @@ local M = {
         config = require('custom.plugins.config.catppuccin')
     },
 
+    -- gruvbox material
     {
-        'Mofiqul/vscode.nvim',
+        'sainnhe/gruvbox-material',
+        name = 'gruvbox-material',
         lazy = false,
-        config = require('custom.plugins.config.vscode')
-    }
+    },
 }
 
 return M

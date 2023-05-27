@@ -1,3 +1,5 @@
-local M = {}
+local M = {
+    filter = 'spectrum'
+}
 
 return M

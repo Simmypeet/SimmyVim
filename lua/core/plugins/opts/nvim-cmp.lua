@@ -18,8 +18,8 @@ local M = function()
         sources = {
             { name = 'path',     priority = 500 },
             { name = 'nvim_lsp', priority = 1000 },
-            { name = 'buffer',   keyword_length = 3, priority = 500 },
-            { name = 'luasnip',  keyword_length = 2, priority = 750 },
+            { name = 'buffer',   priority = 500 },
+            { name = 'luasnip',  priority = 750 },
             { name = 'nvim_lua', priority = 500 }
         },
 

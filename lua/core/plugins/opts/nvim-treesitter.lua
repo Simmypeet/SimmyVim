@@ -1,5 +1,8 @@
 local M = {
-    highlight = { enable = true, },
+    highlight = {
+        use_languagetree = true,
+        enable = true,
+    },
     indent = { enable = false },
     incremental_selection = { enable = true },
     auto_install = true,
