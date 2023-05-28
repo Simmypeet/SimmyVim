@@ -13,3 +13,6 @@ end
 
 vim.keymap.set({ 'n', 'i' }, '<C-s>', save, { desc = 'Save' })
 vim.keymap.set('n', '<C-q>', '<CMD>q<CR>', { desc = 'Quit' })
+
+-- disable q recording
+vim.keymap.set('n', 'q', '<NOP>', { desc = 'Disable q recording' })

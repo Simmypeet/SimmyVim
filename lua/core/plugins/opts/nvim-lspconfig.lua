@@ -13,6 +13,8 @@ local M = {
         },
         severity_sort = true
     },
+
+    format_on_save = true,
 }
 
 return M

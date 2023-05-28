@@ -8,7 +8,6 @@ local M = function(_, opts)
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
     end
 
-    vim.cmd(':map M')
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
     utils.lsp_on_attach(function(client, buffer)
@@ -39,6 +38,10 @@ local M = function(_, opts)
                 function() vim.lsp.buf.format({ async = true }) end,
                 { buffer = buffer, desc = 'Format' }
             )
+
+            if opts.format_on_save then
+                vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+            end
         end
 
         vim.keymap.set(
@@ -130,16 +133,6 @@ local M = function(_, opts)
             vim.cmd('autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()')
         end
     end)
-
-    -- Borders for LspInfo winodw
-    local win = require("lspconfig.ui.windows")
-    local _default_opts = win.default_opts
-
-    win.default_opts = function(options)
-        local win_opts = _default_opts(options)
-        win_opts.border = utils.border('FloatBorder')
-        return win_opts
-    end
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
         vim.lsp.handlers.hover, {

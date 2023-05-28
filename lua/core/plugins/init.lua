@@ -62,7 +62,6 @@ local M = {
         'williamboman/mason.nvim',
         version = "^1",
         cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
-        opts = require('core.plugins.opts.mason'),
         config = require('core.plugins.config.mason')
     },
 
@@ -70,6 +69,7 @@ local M = {
     {
         'williamboman/mason-lspconfig.nvim',
         version = "^1.1",
+        opts = require('core.plugins.opts.mason-lspconfig'),
         config = require('core.plugins.config.mason-lspconfig')
     },
 

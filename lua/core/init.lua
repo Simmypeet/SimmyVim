@@ -9,6 +9,8 @@ M.initialize_options = function()
         vim.opt.shortmess:append({ C = true })
     end
 
+    vim.opt.whichwrap:append "<>[]hl"
+
     local default_options = require('core.options')
     local user_options = utils.load_options('custom.options')
 
