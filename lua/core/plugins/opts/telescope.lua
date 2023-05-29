@@ -1,5 +1,5 @@
 local M = function()
-    local config = {
+    local opts = {
         defaults = {
             vimgrep_arguments = {
                 "rg",
@@ -50,7 +50,7 @@ local M = function()
         },
     }
 
-    return config
+    return opts
 end
 
 return M

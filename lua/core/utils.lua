@@ -84,4 +84,30 @@ M.get_hlgroup = function(name, fallback)
     return fallback or {}
 end
 
+M.autogroup = function(name)
+    return vim.api.nvim_create_augroup("simmy_" .. name, { clear = true })
+end
+
+M.override_hl = function(overrides)
+    local callback = function()
+        local overrides_spec
+        if type(overrides) == "function" then
+            overrides_spec = overrides()
+        else
+            overrides_spec = overrides
+        end
+
+        for hlgroup, hlvalues in pairs(overrides_spec) do
+            vim.api.nvim_set_hl(0, hlgroup, hlvalues)
+        end
+    end
+
+    callback()
+
+    vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
+        group = M.autogroup("override_hl"),
+        callback = callback
+    })
+end
+
 return M

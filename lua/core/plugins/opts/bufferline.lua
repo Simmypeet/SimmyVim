@@ -21,14 +21,14 @@ local M = {
                 filetype = "neo-tree",
                 text = "EXPLORER",
                 highlight = "Directory",
-                text_align = "left",
+                text_align = "center",
                 separator = true,
             },
             {
                 filetype = 'aerial',
                 text = 'SYMBOLS',
                 highlight = "Directory",
-                text_align = 'left',
+                text_align = 'center',
                 separator = true
             }
         },

@@ -201,12 +201,6 @@ local M = {
         },
         opts = require('core.plugins.opts.barbecue'),
     },
-
-    -- base 46 colors
-    {
-        'Simmypeet/base46-colors',
-        lazy = false,
-    }
 }
 
 return M

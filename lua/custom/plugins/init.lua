@@ -22,14 +22,23 @@ local M = {
         ft = { "rust" },
     },
 
-    -- lsp signature
+    -- catppuccin color theme
     {
-        'ray-x/lsp_signature.nvim',
-        evnt = "InsertEnter",
-        config = function()
-            require('lsp_signature').setup()
-        end
+        'catppuccin/nvim',
+        name = 'catppuccin',
+        version = '1.1.x',
+        lazy = false,
+        opts = require('custom.plugins.opts.catppuccin'),
+        config = require('custom.plugins.config.catppuccin')
     },
+
+    -- monokai pro
+    {
+        "loctvl842/monokai-pro.nvim",
+        lazy = false,
+        opts = require('custom.plugins.opts.monokai-pro'),
+        config = require('custom.plugins.config.monokai-pro')
+    }
 }
 
 return M

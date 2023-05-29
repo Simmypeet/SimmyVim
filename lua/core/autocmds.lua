@@ -1,18 +1,16 @@
 -- This file is automatically loaded by lazyvim.config.init
 
-local function augroup(name)
-    return vim.api.nvim_create_augroup("simmy_" .. name, { clear = true })
-end
+local autogroup = require('core.utils').autogroup
 
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
-    group = augroup("checktime"),
+    group = autogroup("checktime"),
     command = "checktime",
 })
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-    group = augroup("highlight_yank"),
+    group = autogroup("highlight_yank"),
     callback = function()
         vim.highlight.on_yank()
     end,
@@ -20,7 +18,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
-    group = augroup("resize_splits"),
+    group = autogroup("resize_splits"),
     callback = function()
         vim.cmd("tabdo wincmd =")
     end,
@@ -28,7 +26,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    group = augroup("auto_create_dir"),
+    group = autogroup("auto_create_dir"),
     callback = function(event)
         if event.match:match("^%w%w+://") then
             return
@@ -40,10 +38,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- stop the current LSP server when changing the CWD
 vim.api.nvim_create_autocmd("DirChanged", {
-    group = augroup("stop_lsp"),
+    group = autogroup("stop_lsp"),
     callback = function()
         -- clear diagnostics
         vim.diagnostic.reset()
         vim.lsp.stop_client(vim.lsp.get_active_clients())
+
+        -- try source all the openned buffers
+        vim.cmd('checktime')
     end,
 })

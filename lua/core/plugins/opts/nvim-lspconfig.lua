@@ -15,6 +15,7 @@ local M = {
     },
 
     format_on_save = true,
+    semantic_highlighting = true,
 }
 
 return M

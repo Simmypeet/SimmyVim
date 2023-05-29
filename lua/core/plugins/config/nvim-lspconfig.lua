@@ -17,9 +17,11 @@ local M = function(_, opts)
                 if query then require("telescope.builtin").lsp_workspace_symbols { query = query } end
             end)
         end
-        -- dsiable semantic highlighting for now
+
         if client.server_capabilities.semanticTokensProvider ~= nil then
-            client.server_capabilities.semanticTokensProvider = nil
+            if not opts.semantic_highlighting then
+                client.server_capabilities.semanticTokensProvider = nil
+            end
         end
 
         if client.server_capabilities.codeActionProvider then

@@ -1,8 +1,28 @@
 local M = {
-    { '<leader>ff', function() require('telescope.builtin').find_files() end,  desc = 'Find files' },
-    { '<leader>ft', function() require('telescope.builtin').colorscheme() end, desc = 'Find themes' },
-    { '<leader>fw', function() require('telescope.builtin').live_grep() end,   desc = 'Find words (grep)' },
-    { '<leader>fb', function() require('telescope.builtin').buffers() end,     desc = 'Find buffers' },
+    {
+        '<leader>ff',
+        function() require('telescope.builtin').find_files() end,
+        desc =
+        'Find files'
+    },
+    {
+        '<leader>ft',
+        function() require('telescope.builtin').colorscheme({ enable_preview = true }) end,
+        desc =
+        'Find themes'
+    },
+    {
+        '<leader>fw',
+        function() require('telescope.builtin').live_grep() end,
+        desc =
+        'Find words (grep)'
+    },
+    {
+        '<leader>fb',
+        function() require('telescope.builtin').buffers() end,
+        desc =
+        'Find buffers'
+    },
     {
         '<leader>fs',
         function()
