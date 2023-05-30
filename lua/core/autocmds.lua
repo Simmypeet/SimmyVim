@@ -43,8 +43,5 @@ vim.api.nvim_create_autocmd("DirChanged", {
         -- clear diagnostics
         vim.diagnostic.reset()
         vim.lsp.stop_client(vim.lsp.get_active_clients())
-
-        -- try source all the openned buffers
-        vim.cmd('checktime')
     end,
 })

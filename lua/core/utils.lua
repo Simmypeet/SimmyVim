@@ -105,7 +105,7 @@ M.override_hl = function(overrides)
     callback()
 
     vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
-        group = M.autogroup("override_hl"),
+        group = vim.api.nvim_create_augroup("simmy_colorscheme", { clear = false }),
         callback = callback
     })
 end

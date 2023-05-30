@@ -5,6 +5,7 @@ local M = {
     space_char_blankline = " ",
     show_current_context = false,
     show_current_context_start = false,
+    use_treesitter = false,
     filetype_exclude = {
         "help",
         "startify",

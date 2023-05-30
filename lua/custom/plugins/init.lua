@@ -38,6 +38,17 @@ local M = {
         lazy = false,
         opts = require('custom.plugins.opts.monokai-pro'),
         config = require('custom.plugins.config.monokai-pro')
+    },
+
+    -- discord rich presence
+    {
+        'andweeb/presence.nvim',
+        lazy = false,
+    },
+
+    {
+        'navarasu/onedark.nvim',
+        lazy = false,
     }
 }
 

@@ -1,5 +1,6 @@
 local M = {
     -- no italics
+    no_italic = true,
     styles = {
         comments = { "italic" },
         conditionals = { "italic" },

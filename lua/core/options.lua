@@ -3,6 +3,7 @@ local M = {}
 M.vim = {
     opt = {
         autowrite = true,           -- Enable auto write
+        autoread = true,
         clipboard = "unnamedplus",  -- Sync with system clipboard
         completeopt = "menu,menuone,noselect",
         conceallevel = 3,           -- Hide * markup for bold and italic
