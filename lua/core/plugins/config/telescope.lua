@@ -8,8 +8,9 @@ local M = function(_, opts)
     utils.override_hl(
         function()
             -- get highlights from highlight groups
-            local normal = utils.get_hlgroup "Normal"
-            local fg, bg = normal.fg, normal.bg
+            local normal_float = utils.get_hlgroup("NormalFloat")
+            local fg, bg = normal_float.fg, normal_float.bg
+
             local bg_alt = utils.get_hlgroup("Visual").bg
             local green = utils.get_hlgroup("String").fg
             local red = utils.get_hlgroup("Error").fg

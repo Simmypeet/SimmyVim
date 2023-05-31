@@ -46,9 +46,26 @@ local M = {
         lazy = false,
     },
 
+    -- vscode dark+ theme
+    {
+        'tomasiser/vim-code-dark',
+        lazy = false,
+    },
+
+    -- one dark theme
     {
         'navarasu/onedark.nvim',
         lazy = false,
+        opts = require('custom.plugins.opts.onedark'),
+        config = require('custom.plugins.config.onedark')
+    },
+
+    -- tundra theme
+    {
+        'sam4llis/nvim-tundra',
+        lazy = false,
+        opts = require('custom.plugins.opts.nvim-tundra'),
+        config = require('custom.plugins.config.nvim-tundra')
     }
 }
 

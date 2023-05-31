@@ -1,5 +1,5 @@
 local M = function(_, opts)
-    require('neo-tree').setup(opts)
+    require('nvim-tundra').setup(opts)
 end
 
 return M

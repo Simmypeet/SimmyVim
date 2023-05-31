@@ -18,16 +18,16 @@ local M = {
         end,
         offsets = {
             {
-                filetype = "neo-tree",
+                filetype = "NvimTree",
                 text = "EXPLORER",
-                highlight = "Directory",
+                highlight = "NormalFloat",
                 text_align = "center",
                 separator = true,
             },
             {
                 filetype = 'aerial',
                 text = 'SYMBOLS',
-                highlight = "Directory",
+                highlight = "NormalFloat",
                 text_align = 'center',
                 separator = true
             }

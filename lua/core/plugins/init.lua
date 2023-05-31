@@ -1,16 +1,11 @@
 local M = {
     -- file explorer
     {
-        'nvim-neo-tree/neo-tree.nvim',
-        cmd = "Neotree",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
-        opts = require('core.plugins.opts.neo-tree'),
-        keys = require('core.plugins.keys.neo-tree'),
-        config = require('core.plugins.config.neo-tree'),
+        "nvim-tree/nvim-tree.lua",
+        cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+        keys = require('core.plugins.keys.nvim-tree'),
+        opts = require('core.plugins.opts.nvim-tree'),
+        config = require('core.plugins.config.nvim-tree')
     },
 
     -- which key
@@ -200,6 +195,7 @@ local M = {
             "nvim-tree/nvim-web-devicons",
         },
         opts = require('core.plugins.opts.barbecue'),
+        config = require('core.plugins.config.barbecue'),
     },
 }
 
