@@ -151,11 +151,15 @@ local M = function(_, opts)
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
         vim.lsp.handlers.hover, {
             border = utils.border('SimmyBorder1'),
+            title = " Hover",
+            title_pos = 'left'
         }
     )
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
         vim.lsp.handlers.signature_help, {
             border = utils.border('SimmyBorder1'),
+            title = " Signature",
+            title_pos = 'left'
         }
     )
 
