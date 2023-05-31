@@ -39,16 +39,16 @@ M.lsp_on_attach = function(on_attach)
     })
 end
 
-M.border = function(hl_name)
+M.border = function(hl_group)
     return {
-        { "╭", hl_name },
-        { "─", hl_name },
-        { "╮", hl_name },
-        { "│", hl_name },
-        { "╯", hl_name },
-        { "─", hl_name },
-        { "╰", hl_name },
-        { "│", hl_name },
+        { "┌", hl_group },
+        { "─", hl_group },
+        { "┐", hl_group },
+        { "│", hl_group },
+        { "┘", hl_group },
+        { "─", hl_group },
+        { "└", hl_group },
+        { "│", hl_group },
     }
 end
 
@@ -88,7 +88,7 @@ M.autogroup = function(name)
     return vim.api.nvim_create_augroup("simmy_" .. name, { clear = true })
 end
 
-M.override_hl = function(overrides)
+M.set_hl = function(overrides)
     local callback = function()
         local overrides_spec
         if type(overrides) == "function" then

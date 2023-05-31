@@ -3,6 +3,29 @@ local M = {}
 local utils = require('core.utils')
 
 M.initialize_options = function()
+    -- set useful highlight groups
+    utils.set_hl(function()
+        local normal = utils.get_hlgroup('Normal')
+        local visual = utils.get_hlgroup('Visual')
+        return {
+            ['SimmyBorder'] = {
+                bg = normal.bg,
+                fg = visual.bg,
+            }
+        }
+    end)
+
+    utils.set_hl(function()
+        local normal_float = utils.get_hlgroup('NormalFloat')
+        local visual = utils.get_hlgroup('Visual')
+        return {
+            ['SimmyBorder1'] = {
+                bg = normal_float.bg,
+                fg = visual.bg,
+            }
+        }
+    end)
+
     vim.opt.shortmess:append({ W = true, I = true, c = true })
     if vim.fn.has("nvim-0.9.0") == 1 then
         vim.opt.splitkeep = "screen"

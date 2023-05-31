@@ -24,17 +24,19 @@ local M = function()
         },
 
         window = {
-            completion = cmp.config.window.bordered({
-                side_padding = 1,
+            completion = {
+                sidebar = 1,
+                winhighlight = 'Normal:Normal,Normal:Normal,CursorLine:Visual,Search:None',
                 scrollbar = false,
-            }),
+                border = utils.border("SimmyBorder"),
+            },
             documentation = {
-                border = utils.border('CmpDocBorder'),
+                border = utils.border("SimmyBorder"),
+                winhighlight = 'Normal:Normal,Normal:Normal,CursorLine:Visual,Search:None',
             }
         },
 
-        formatting =
-        {
+        formatting = {
             -- default fields order i.e completion word + item.kind + item.kind icons
             fields = { "abbr", "kind", "menu" },
 
@@ -94,8 +96,6 @@ local M = function()
             }),
         },
     }
-
-    config.window.documentation.border = utils.border('CmpDocBorder')
 
     return config
 end

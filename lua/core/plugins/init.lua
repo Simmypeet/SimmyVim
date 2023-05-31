@@ -77,6 +77,7 @@ local M = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
             'hrsh7th/nvim-cmp',
+            'folke/neodev.nvim'
         },
         opts = require('core.plugins.opts.nvim-lspconfig'),
         config = require('core.plugins.config.nvim-lspconfig')

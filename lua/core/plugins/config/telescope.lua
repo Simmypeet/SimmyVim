@@ -5,7 +5,7 @@ local M = function(_, opts)
 
     local utils = require('core.utils')
 
-    utils.override_hl(
+    utils.set_hl(
         function()
             -- get highlights from highlight groups
             local normal_float = utils.get_hlgroup("NormalFloat")
@@ -24,7 +24,7 @@ local M = function(_, opts)
                 TelescopePreviewTitle = { fg = bg, bg = green },
                 TelescopePromptBorder = { fg = bg_alt, bg = bg_alt },
                 TelescopePromptNormal = { fg = fg, bg = bg_alt },
-                TelescopePromptPrefix = { fg = red, bg = bg_alt },
+                TelescopePromptPrefix = { bg = bg_alt },
                 TelescopePromptTitle = { fg = bg, bg = red },
                 TelescopeResultsBorder = { fg = bg, bg = bg },
                 TelescopeResultsNormal = { bg = bg },

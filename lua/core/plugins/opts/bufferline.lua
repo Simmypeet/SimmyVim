@@ -1,3 +1,16 @@
+local utils = require("core.utils")
+utils.set_hl(function()
+    local diretory = utils.get_hlgroup("Directory")
+
+    return {
+        ['SimmyBufferLineOffset'] = {
+            fg = diretory.fg,
+            bg = diretory.bg,
+            bold = true
+        }
+    }
+end)
+
 local M = {
     options = {
         separator_style = "slant",
@@ -20,16 +33,15 @@ local M = {
             {
                 filetype = "NvimTree",
                 text = "EXPLORER",
-                highlight = "NormalFloat",
+                highlight = "SimmyBufferLineOffset",
                 text_align = "center",
                 separator = true,
             },
             {
                 filetype = 'aerial',
                 text = 'SYMBOLS',
-                highlight = "NormalFloat",
+                highlight = "SimmyBufferLineOffset",
                 text_align = 'center',
-                separator = true
             }
         },
         hover = {
