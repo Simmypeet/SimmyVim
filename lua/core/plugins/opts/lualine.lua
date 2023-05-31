@@ -39,15 +39,15 @@ local M = function()
                 {
                     "diff",
                     symbols = {
-                        added = " ",
-                        modified = " ",
-                        removed = " ",
+                        added = "  ",
+                        modified = "  ",
+                        removed = "  ",
                     },
                 },
             },
             lualine_z = {
                 function()
-                    return " " .. os.date("%R")
+                    return "  " .. os.date("%R")
                 end,
             },
         },
