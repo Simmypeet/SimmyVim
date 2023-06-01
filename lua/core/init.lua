@@ -15,16 +15,10 @@ M.initialize_options = function()
         }
     end)
 
-    utils.set_hl(function()
-        local normal_float = utils.get_hlgroup('NormalFloat')
-        local visual = utils.get_hlgroup('Visual')
-        return {
-            ['SimmyBorder1'] = {
-                bg = normal_float.bg,
-                fg = visual.bg,
-            }
-        }
-    end)
+    -- disable some default providers
+    for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
+        vim.g["loaded_" .. provider .. "_provider"] = 0
+    end
 
     vim.opt.shortmess:append({ W = true, I = true, c = true })
     if vim.fn.has("nvim-0.9.0") == 1 then
@@ -33,6 +27,13 @@ M.initialize_options = function()
     end
 
     vim.opt.whichwrap:append "<>[]hl"
+
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = "qf",
+        callback = function()
+            vim.opt_local.buflisted = false
+        end,
+    })
 
     local default_options = require('core.options')
     local user_options = utils.load_options('custom.options')

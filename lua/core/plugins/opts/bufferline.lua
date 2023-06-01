@@ -35,7 +35,6 @@ local M = {
                 text = "EXPLORER",
                 highlight = "SimmyBufferLineOffset",
                 text_align = "center",
-                separator = true,
             },
             {
                 filetype = 'aerial',

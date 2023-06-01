@@ -3,6 +3,8 @@ local M = function(_, opts)
     local notify = require("notify")
     vim.notify = notify
     notify.setup(opts)
+
+    local utils = require('core.utils')
 end
 
 return M

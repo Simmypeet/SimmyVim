@@ -101,8 +101,7 @@ local M = {
     -- dressing ui
     {
         "stevearc/dressing.nvim",
-        lazy = true,
-        init = require('core.plugins.init.dressing'),
+        lazy = false,
     },
 
     -- bufferline
@@ -198,6 +197,23 @@ local M = {
         opts = require('core.plugins.opts.barbecue'),
         config = require('core.plugins.config.barbecue'),
     },
+
+    -- dap
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            {
+                "rcarriga/nvim-dap-ui",
+                opts = require('core.plugins.opts.nvim-dap-ui'),
+                config = require('core.plugins.config.nvim-dap-ui')
+            },
+            {
+                "rcarriga/cmp-dap",
+                dependencies = { "nvim-cmp" },
+                config = require('core.plugins.config.cmp-dap')
+            },
+        },
+    }
 }
 
 return M

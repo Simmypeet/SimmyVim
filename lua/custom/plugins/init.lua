@@ -46,12 +46,6 @@ local M = {
         lazy = false,
     },
 
-    -- vscode dark+ theme
-    {
-        'tomasiser/vim-code-dark',
-        lazy = false,
-    },
-
     -- one dark theme
     {
         'navarasu/onedark.nvim',

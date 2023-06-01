@@ -78,21 +78,21 @@ local M = function(_, opts)
             'n',
             '<leader>ls',
             function() require('telescope.builtin').lsp_document_symbols() end,
-            { buffer = buffer, desc = 'Document symbols' }
+            { buffer = buffer, desc = 'Rename' }
         )
 
         vim.keymap.set(
             'n',
             '<leader>lS',
             workspace_symbol,
-            { buffer = buffer, desc = 'Document symbols' }
+            { buffer = buffer, desc = 'Find workspace symbols' }
         )
 
         vim.keymap.set(
             'n',
             '<leader>ld',
             function() vim.diagnostic.open_float() end,
-            { buffer = buffer, desc = 'Document diagnostics' }
+            { buffer = buffer, desc = 'Float diagnostics' }
         )
 
         if client.server_capabilities.hoverProvider then
@@ -148,18 +148,23 @@ local M = function(_, opts)
         end
     end)
 
+    vim.keymap.set(
+        'n',
+        '<leader>il',
+        "<CMD>LspInfo<CR>",
+        { desc = 'Lsp information' }
+    )
+
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
         vim.lsp.handlers.hover, {
-            border = utils.border('SimmyBorder1'),
-            title = " Hover",
-            title_pos = 'left'
+            border = utils.border('FloatBorder'),
+            silent = true,
         }
     )
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
         vim.lsp.handlers.signature_help, {
-            border = utils.border('SimmyBorder1'),
-            title = " Signature",
-            title_pos = 'left'
+            border = utils.border('FloatBorder'),
+            silent = true,
         }
     )
 

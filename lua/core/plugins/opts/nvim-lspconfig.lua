@@ -11,7 +11,14 @@ local M = {
             -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
             -- prefix = "icons",
         },
-        severity_sort = true
+        severity_sort = true,
+        float = {
+            focused = false,
+            style = "minimal",
+            source = "always",
+            header = "",
+            prefix = "",
+        },
     },
 
     format_on_save = true,

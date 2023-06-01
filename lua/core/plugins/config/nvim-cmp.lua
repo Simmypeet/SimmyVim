@@ -1,5 +1,6 @@
 local M = function(_, opts)
-    require("cmp").setup(opts)
+    local cmp = require("cmp");
+    cmp.setup(opts)
 end
 
 return M
