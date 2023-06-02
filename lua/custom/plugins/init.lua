@@ -16,12 +16,6 @@ local M = {
         end,
     },
 
-    -- rust-tools
-    {
-        "simrat39/rust-tools.nvim",
-        ft = { "rust" },
-    },
-
     -- catppuccin color theme
     {
         'catppuccin/nvim',
