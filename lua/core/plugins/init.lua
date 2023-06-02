@@ -25,6 +25,14 @@ local M = {
         config = require('core.plugins.config.nvim-treesitter')
     },
 
+    -- lsp-progress
+    {
+        'linrongbin16/lsp-progress.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = require('core.plugins.opts.lsp-progress'),
+        config = require('core.plugins.config.lsp-progress')
+    },
+
     -- indent guides for Neovim
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -68,6 +76,13 @@ local M = {
         config = require('core.plugins.config.mason-lspconfig')
     },
 
+
+    {
+        'ray-x/lsp_signature.nvim',
+        opts = require('core.plugins.opts.lsp_signature'),
+        config = require('core.plugins.config.lsp_signature')
+    },
+
     -- lspconfig
     {
         'neovim/nvim-lspconfig',
@@ -77,7 +92,8 @@ local M = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
             'hrsh7th/nvim-cmp',
-            'folke/neodev.nvim'
+            'folke/neodev.nvim',
+            'ray-x/lsp_signature.nvim'
         },
         opts = require('core.plugins.opts.nvim-lspconfig'),
         config = require('core.plugins.config.nvim-lspconfig')
@@ -86,6 +102,9 @@ local M = {
     -- statusline
     {
         "nvim-lualine/lualine.nvim",
+        dependencies = {
+            'linrongbin16/lsp-progress.nvim'
+        },
         event = "VeryLazy",
         opts = require('core.plugins.opts.lualine'),
     },

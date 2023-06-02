@@ -10,6 +10,13 @@ local M = function(_, opts)
 
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
+    local diagnostic_float = function()
+        vim.diagnostic.open_float({
+            focus = false,
+            border = utils.border("FloatBorder")
+        })
+    end
+
     utils.lsp_on_attach(function(client, buffer)
         -- set mappings
         local function workspace_symbol()
@@ -91,7 +98,7 @@ local M = function(_, opts)
         vim.keymap.set(
             'n',
             '<leader>ld',
-            function() vim.diagnostic.open_float() end,
+            diagnostic_float,
             { buffer = buffer, desc = 'Float diagnostics' }
         )
 
@@ -146,6 +153,13 @@ local M = function(_, opts)
             -- create buffer autocmd to update code lens on insert leave
             vim.cmd('autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()')
         end
+
+
+        -- show float diagnostics on cursor holds
+        vim.api.nvim_create_autocmd({ 'CursorHold' }, {
+            buffer = buffer,
+            callback = diagnostic_float
+        })
     end)
 
     vim.keymap.set(

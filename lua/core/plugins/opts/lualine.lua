@@ -1,6 +1,14 @@
 local M = function()
     local util = require('core.utils')
 
+    -- refresh lualine
+    vim.cmd([[
+        augroup lualine_augroup
+            autocmd!
+            autocmd User LspProgressStatusUpdated lua require("lualine").refresh()
+        augroup END
+    ]])
+
     return {
         options = {
             theme = "auto",
@@ -44,6 +52,9 @@ local M = function()
                         removed = "  ",
                     },
                 },
+            },
+            lualine_y = {
+                require("lsp-progress").progress,
             },
             lualine_z = {
                 function()
