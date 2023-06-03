@@ -27,13 +27,9 @@ M.initialize_options = function()
     utils.set_hl(function()
         local normal = utils.get_hlgroup('Normal')
         return {
-            ['Pmenu'] = {
+            ['NormalFloat'] = {
                 bg = normal.bg,
-                fg = normal.fg
-            },
-            ['PmenuExtra'] = {
-                bg = normal.bg,
-                fg = normal.fg
+                fg = normal.fg,
             }
         }
     end)

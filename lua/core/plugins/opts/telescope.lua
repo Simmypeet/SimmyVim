@@ -1,4 +1,5 @@
 local M = function()
+    local utils = require('core.utils')
     local opts = {
         defaults = {
             vimgrep_arguments = {
