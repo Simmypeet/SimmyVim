@@ -153,13 +153,6 @@ local M = function(_, opts)
             -- create buffer autocmd to update code lens on insert leave
             vim.cmd('autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()')
         end
-
-
-        -- show float diagnostics on cursor holds
-        vim.api.nvim_create_autocmd({ 'CursorHold' }, {
-            buffer = buffer,
-            callback = diagnostic_float
-        })
     end)
 
     vim.keymap.set(
@@ -200,38 +193,24 @@ local M = function(_, opts)
         local ok, custom_config = pcall(require, 'custom.servers.' .. mason_name)
 
         -- if has `cmp`, use cmp capabilities, otherwise use vim's default
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.completion.completionItem = {
-            documentationFormat = { "markdown", "plaintext" },
-            snippetSupport = true,
-            preselectSupport = true,
-            insertReplaceSupport = true,
-            labelDetailsSupport = true,
-            deprecatedSupport = true,
-            commitCharactersSupport = true,
-            tagSupport = { valueSet = { 1 } },
-            resolveSupport = {
-                properties = {
-                    "documentation",
-                    "detail",
-                    "additionalTextEdits",
-                },
-            },
-        }
+        local capabilities = nil;
+
+        if utils.is_available('cmp-nvim-lsp') then
+            require('lazy').load({ plugins = { 'cmp-nvim-lsp' } })
+            capabilities = require('cmp_nvim_lsp').default_capabilities()
+        else
+            capabilities = vim.lsp.protocol.make_client_capabilities()
+        end
 
         local config = {
             capabilities = capabilities,
-            -- only allow root_dir to be the same as cwd
-            root_dir = function(_)
-                return vim.loop.cwd()
-            end,
         }
 
         if ok then
             -- if it is a table, extend the config
             -- if it is a function, call it with the config as an argument
             if type(custom_config) == 'table' then
-                config = vim.tbl_deep_extend('force', config, custom_config)
+                config = vim.tbl_deep_extend('force', custom_config, config)
             elseif type(custom_config) == 'function' then
                 custom_config(config)
                 goto continue

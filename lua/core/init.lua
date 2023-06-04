@@ -14,25 +14,6 @@ M.initialize_options = function()
             }
         }
     end)
-    utils.set_hl(function()
-        local normal = utils.get_hlgroup('Normal')
-        local visual = utils.get_hlgroup('Visual')
-        return {
-            ['FloatBorder'] = {
-                bg = normal.bg,
-                fg = visual.bg,
-            }
-        }
-    end)
-    utils.set_hl(function()
-        local normal = utils.get_hlgroup('Normal')
-        return {
-            ['NormalFloat'] = {
-                bg = normal.bg,
-                fg = normal.fg,
-            }
-        }
-    end)
 
     -- disable some default providers
     for _, provider in ipairs { "node", "perl", "python3", "ruby" } do

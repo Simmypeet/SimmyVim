@@ -35,3 +35,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
     end,
 })
+
+-- stop the current LSP server when changing the CWD
+vim.api.nvim_create_autocmd("DirChanged", {
+    group = autogroup("stop_lsp"),
+    callback = function()
+        -- clear diagnostics
+        vim.diagnostic.reset()
+        vim.lsp.stop_client(vim.lsp.get_active_clients())
+    end,
+})
