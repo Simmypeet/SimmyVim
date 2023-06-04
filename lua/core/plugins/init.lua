@@ -40,6 +40,7 @@ local M = {
         opts = require('core.plugins.opts.indent-blankline'),
     },
 
+    -- notification ui
     {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
@@ -77,7 +78,7 @@ local M = {
         config = require('core.plugins.config.mason-lspconfig')
     },
 
-
+    -- lsp signature
     {
         'ray-x/lsp_signature.nvim',
         opts = require('core.plugins.opts.lsp_signature'),

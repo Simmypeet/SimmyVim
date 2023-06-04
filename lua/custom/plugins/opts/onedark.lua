@@ -1,5 +1,8 @@
 local M = {
-    style = 'darker'
+    style = 'warmer',
+    diagnostics = {
+        darker = false,
+    }
 }
 
 return M

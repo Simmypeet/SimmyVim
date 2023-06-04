@@ -54,6 +54,12 @@ local M = {
         lazy = false,
         opts = require('custom.plugins.opts.nvim-tundra'),
         config = require('custom.plugins.config.nvim-tundra')
+    },
+
+    -- one monokai
+    {
+        'cpea2506/one_monokai.nvim',
+        lazy = false,
     }
 }
 
