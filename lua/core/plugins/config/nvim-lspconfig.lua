@@ -16,140 +16,149 @@ local M = function(_, opts)
             border = utils.border("FloatBorder")
         })
     end
+    vim.api.nvim_create_autocmd(
+        {
+            "LspAttach"
+        },
+        {
+            group = utils.autogroup("lsp_attach"),
+            callback = function(args)
+                local buffer = args.buf
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-    utils.lsp_on_attach(function(client, buffer)
-        -- set mappings
-        local function workspace_symbol()
-            vim.ui.input({ prompt = "Symbol Query: " }, function(query)
-                if query then require("telescope.builtin").lsp_workspace_symbols { query = query } end
-            end)
-        end
+                -- set mappings
+                local function workspace_symbol()
+                    vim.ui.input({ prompt = "Symbol Query: " }, function(query)
+                        if query then require("telescope.builtin").lsp_workspace_symbols { query = query } end
+                    end)
+                end
 
-        if client.server_capabilities.semanticTokensProvider ~= nil then
-            if not opts.semantic_highlighting then
-                client.server_capabilities.semanticTokensProvider = nil
-            end
-        end
+                if client.server_capabilities.semanticTokensProvider ~= nil then
+                    if not opts.semantic_highlighting then
+                        client.server_capabilities.semanticTokensProvider = nil
+                    end
+                end
 
-        if client.server_capabilities.codeActionProvider then
-            vim.keymap.set(
-                'n',
-                '<leader>la',
-                function() vim.lsp.buf.code_action() end,
-                { buffer = buffer, desc = 'Code action' }
-            )
-        end
+                if client.server_capabilities.codeActionProvider then
+                    vim.keymap.set(
+                        'n',
+                        '<leader>la',
+                        function() vim.lsp.buf.code_action() end,
+                        { buffer = buffer, desc = 'Code action' }
+                    )
+                end
 
-        if client.server_capabilities.documentFormattingProvider then
-            vim.keymap.set(
-                'n',
-                '<leader>lf',
-                function() vim.lsp.buf.format({ async = true }) end,
-                { buffer = buffer, desc = 'Format' }
-            )
-        end
+                if client.server_capabilities.documentFormattingProvider then
+                    vim.keymap.set(
+                        'n',
+                        '<leader>lf',
+                        function() vim.lsp.buf.format({ async = true }) end,
+                        { buffer = buffer, desc = 'Format' }
+                    )
+                end
 
-        vim.keymap.set(
-            'n',
-            '<leader>lD',
-            function() vim.cmd(':Telescope diagnostics') end,
-            { buffer = buffer, desc = 'Workspace diagnostics' }
-        )
+                vim.keymap.set(
+                    'n',
+                    '<leader>lD',
+                    function() vim.cmd(':Telescope diagnostics') end,
+                    { buffer = buffer, desc = 'Workspace diagnostics' }
+                )
 
-        if client.server_capabilities.renameProvider then
-            vim.keymap.set(
-                'n',
-                '<leader>lr',
-                function() vim.lsp.buf.rename() end,
-                { buffer = buffer, desc = 'Document symbols' }
-            )
-        end
+                if client.server_capabilities.renameProvider then
+                    vim.keymap.set(
+                        'n',
+                        '<leader>lr',
+                        function() vim.lsp.buf.rename() end,
+                        { buffer = buffer, desc = 'Document symbols' }
+                    )
+                end
 
-        -- restart lsp server
-        vim.keymap.set(
-            'n',
-            '<leader>l/',
-            function()
-                vim.lsp.stop_client(vim.lsp.get_active_clients())
-                vim.diagnostic.reset()
-                vim.cmd('edit')
-            end,
-            { buffer = buffer, desc = 'Restart LSP server' }
-        )
+                -- restart lsp server
+                vim.keymap.set(
+                    'n',
+                    '<leader>l/',
+                    function()
+                        vim.lsp.stop_client(vim.lsp.get_active_clients())
+                        vim.diagnostic.reset()
+                        vim.cmd('edit')
+                    end,
+                    { buffer = buffer, desc = 'Restart LSP server' }
+                )
 
-        vim.keymap.set(
-            'n',
-            '<leader>ls',
-            function() require('telescope.builtin').lsp_document_symbols() end,
-            { buffer = buffer, desc = 'Rename' }
-        )
+                vim.keymap.set(
+                    'n',
+                    '<leader>ls',
+                    function() require('telescope.builtin').lsp_document_symbols() end,
+                    { buffer = buffer, desc = 'Rename' }
+                )
 
-        vim.keymap.set(
-            'n',
-            '<leader>lS',
-            workspace_symbol,
-            { buffer = buffer, desc = 'Find workspace symbols' }
-        )
+                vim.keymap.set(
+                    'n',
+                    '<leader>lS',
+                    workspace_symbol,
+                    { buffer = buffer, desc = 'Find workspace symbols' }
+                )
 
-        vim.keymap.set(
-            'n',
-            '<leader>ld',
-            diagnostic_float,
-            { buffer = buffer, desc = 'Float diagnostics' }
-        )
+                vim.keymap.set(
+                    'n',
+                    '<leader>ld',
+                    diagnostic_float,
+                    { buffer = buffer, desc = 'Float diagnostics' }
+                )
 
-        if client.server_capabilities.hoverProvider then
-            vim.keymap.set(
-                'n',
-                'K',
-                function() vim.lsp.buf.hover() end,
-                { buffer = buffer, desc = 'Hover' }
-            )
-        end
+                if client.server_capabilities.hoverProvider then
+                    vim.keymap.set(
+                        'n',
+                        'K',
+                        function() vim.lsp.buf.hover() end,
+                        { buffer = buffer, desc = 'Hover' }
+                    )
+                end
 
-        if client.server_capabilities.definitionProvider then
-            vim.keymap.set(
-                'n',
-                'gd',
-                function() vim.lsp.buf.definition() end,
-                { buffer = buffer, desc = 'Definition' }
-            )
-        end
+                if client.server_capabilities.definitionProvider then
+                    vim.keymap.set(
+                        'n',
+                        'gd',
+                        function() vim.lsp.buf.definition() end,
+                        { buffer = buffer, desc = 'Definition' }
+                    )
+                end
 
-        if client.server_capabilities.declarationProvider then
-            vim.keymap.set(
-                'n',
-                'gD',
-                function() vim.lsp.buf.declaration() end,
-                { buffer = buffer, desc = 'Declaration' }
-            )
-        end
+                if client.server_capabilities.declarationProvider then
+                    vim.keymap.set(
+                        'n',
+                        'gD',
+                        function() vim.lsp.buf.declaration() end,
+                        { buffer = buffer, desc = 'Declaration' }
+                    )
+                end
 
-        if client.server_capabilities.codeLensProvider then
-            vim.lsp.codelens.refresh()
-
-            vim.keymap.set(
-                'n',
-                '<leader>ll',
-                function()
-                    vim.lsp.codelens.run()
-                end,
-                { buffer = buffer, desc = 'Run code lens' }
-            )
-
-            vim.keymap.set(
-                'n',
-                '<leader>lL',
-                function()
+                if client.server_capabilities.codeLensProvider then
                     vim.lsp.codelens.refresh()
-                end,
-                { buffer = buffer, desc = 'Refresh code lens' }
-            )
 
-            -- create buffer autocmd to update code lens on insert leave
-            vim.cmd('autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()')
-        end
-    end)
+                    vim.keymap.set(
+                        'n',
+                        '<leader>ll',
+                        function()
+                            vim.lsp.codelens.run()
+                        end,
+                        { buffer = buffer, desc = 'Run code lens' }
+                    )
+
+                    vim.keymap.set(
+                        'n',
+                        '<leader>lL',
+                        function()
+                            vim.lsp.codelens.refresh()
+                        end,
+                        { buffer = buffer, desc = 'Refresh code lens' }
+                    )
+
+                    -- create buffer autocmd to update code lens on insert leave
+                    vim.cmd('autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()')
+                end
+            end
+        })
 
     vim.keymap.set(
         'n',

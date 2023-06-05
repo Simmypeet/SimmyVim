@@ -65,6 +65,11 @@ local M = {
     {
         'tiagovla/tokyodark.nvim',
         lazy = false,
+    },
+
+    {
+        'sainnhe/sonokai',
+        lazy = false,
     }
 }
 
