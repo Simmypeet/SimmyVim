@@ -7,6 +7,7 @@ local M = {
         "TelescopePrompt",
         "noice",
         "neo-tree",
+        "NvimTree",
         "aerial",
     }
 }

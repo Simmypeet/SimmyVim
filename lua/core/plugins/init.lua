@@ -65,7 +65,7 @@ local M = {
     {
         'williamboman/mason.nvim',
         version = "^1",
-        cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+        cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
         opts = require('core.plugins.opts.mason'),
         config = require('core.plugins.config.mason')
     },

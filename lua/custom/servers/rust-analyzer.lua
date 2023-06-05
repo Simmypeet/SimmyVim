@@ -7,6 +7,9 @@ local M = {
             rustfmt = {
                 extraArgs = { "+nightly" }
             },
+            diagnostics = {
+                disabled = { "unresolved-proc-macro" }
+            },
         }
     }
 }

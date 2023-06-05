@@ -6,6 +6,14 @@ local M = {
         shade = "dark",
         percentage = 0.1,
     },
+    color_overrides = {
+        mocha = {
+            base = "#000000",
+            mantle = "#000000",
+            crust = "#000000",
+        },
+    },
+
 }
 
 return M

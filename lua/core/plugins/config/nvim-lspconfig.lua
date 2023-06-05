@@ -47,10 +47,6 @@ local M = function(_, opts)
                 function() vim.lsp.buf.format({ async = true }) end,
                 { buffer = buffer, desc = 'Format' }
             )
-
-            if opts.format_on_save then
-                vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
-            end
         end
 
         vim.keymap.set(

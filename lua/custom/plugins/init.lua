@@ -60,6 +60,11 @@ local M = {
     {
         'cpea2506/one_monokai.nvim',
         lazy = false,
+    },
+
+    {
+        'tiagovla/tokyodark.nvim',
+        lazy = false,
     }
 }
 
