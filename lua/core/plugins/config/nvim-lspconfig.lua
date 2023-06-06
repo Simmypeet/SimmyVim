@@ -16,6 +16,26 @@ local M = function(_, opts)
             border = utils.border("FloatBorder")
         })
     end
+
+    -- shut down the client if the deleted buffer was the last one associated with it
+    vim.api.nvim_create_autocmd("BufWipeout", {
+        group = utils.autogroup("automatic_lsp_shutdown"),
+        callback = function(_)
+            -- get all active clients
+            local clients = vim.lsp.get_active_clients()
+
+            -- look for clients with no associated buffer
+            for _, client in pairs(clients) do
+                local buffers = vim.lsp.get_buffers_by_client_id(client.id)
+
+                -- if there are no buffers associated with the client, shut it down
+                if #buffers == 0 then
+                    vim.lsp.stop_client(client.id)
+                end
+            end
+        end,
+    })
+
     vim.api.nvim_create_autocmd(
         {
             "LspAttach"

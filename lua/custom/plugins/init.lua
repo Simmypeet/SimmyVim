@@ -70,6 +70,11 @@ local M = {
     {
         'sainnhe/sonokai',
         lazy = false,
+    },
+
+    {
+        "nyoom-engineering/oxocarbon.nvim",
+        lazy = false
     }
 }
 
