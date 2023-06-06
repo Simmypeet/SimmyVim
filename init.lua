@@ -3,6 +3,7 @@ local core = require('core')
 core.initialize_options()
 core.initialize_plugins()
 
+
 -- load autocmds
 require('core.autocmds')
 

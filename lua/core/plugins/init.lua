@@ -78,13 +78,6 @@ local M = {
         config = require('core.plugins.config.mason-lspconfig')
     },
 
-    -- lsp signature
-    {
-        'ray-x/lsp_signature.nvim',
-        opts = require('core.plugins.opts.lsp_signature'),
-        config = require('core.plugins.config.lsp_signature')
-    },
-
     -- lspconfig
     {
         'neovim/nvim-lspconfig',
@@ -95,7 +88,8 @@ local M = {
             'williamboman/mason-lspconfig.nvim',
             'hrsh7th/nvim-cmp',
             'folke/neodev.nvim',
-            'ray-x/lsp_signature.nvim'
+            'ray-x/lsp_signature.nvim',
+            'hrsh7th/cmp-nvim-lsp-signature-help'
         },
         opts = require('core.plugins.opts.nvim-lspconfig'),
         config = require('core.plugins.config.nvim-lspconfig')

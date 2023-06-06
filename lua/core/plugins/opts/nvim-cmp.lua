@@ -16,11 +16,12 @@ local M = function()
         },
 
         sources = {
-            { name = 'path',     priority = 500 },
-            { name = 'nvim_lsp', priority = 1000 },
-            { name = 'buffer',   priority = 500 },
-            { name = 'luasnip',  priority = 750 },
-            { name = 'nvim_lua', priority = 500 }
+            { name = 'path',                   priority = 500 },
+            { name = 'nvim_lsp',               priority = 1000 },
+            { name = 'buffer',                 priority = 500 },
+            { name = 'luasnip',                priority = 750 },
+            { name = 'nvim_lua',               priority = 500 },
+            { name = 'nvim_lsp_signature_help' }
         },
 
         window = {
