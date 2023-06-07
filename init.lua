@@ -3,7 +3,6 @@ local core = require('core')
 core.initialize_options()
 core.initialize_plugins()
 
-
 -- load autocmds
 require('core.autocmds')
 
@@ -12,4 +11,3 @@ require('core.mappings')
 
 -- call the polish function
 pcall(require, 'custom.polish')
-

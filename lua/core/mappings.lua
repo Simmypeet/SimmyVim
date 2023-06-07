@@ -12,7 +12,6 @@ local save = function()
 end
 
 vim.keymap.set({ 'n', 'i' }, '<C-s>', save, { desc = 'Save' })
-vim.keymap.set('n', '<C-q>', '<CMD>q<CR>', { desc = 'Quit' })
 vim.keymap.set('n', '<C-\\>', '<CMD>vsplit<CR>', { desc = 'Vertical split' })
 
 -- disable q recording

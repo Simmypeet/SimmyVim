@@ -102,7 +102,10 @@ local M = function(_, opts)
                     function()
                         vim.lsp.stop_client(vim.lsp.get_active_clients())
                         vim.diagnostic.reset()
-                        vim.cmd('edit')
+
+                        vim.schedule(function()
+                            vim.cmd('silent! bufdo e')
+                        end)
                     end,
                     { buffer = buffer, desc = 'Restart LSP server' }
                 )
@@ -220,14 +223,25 @@ local M = function(_, opts)
         local ok, custom_config = pcall(require, 'custom.servers.' .. mason_name)
 
         -- if has `cmp`, use cmp capabilities, otherwise use vim's default
-        local capabilities = nil;
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-        if utils.is_available('cmp-nvim-lsp') then
-            require('lazy').load({ plugins = { 'cmp-nvim-lsp' } })
-            capabilities = require('cmp_nvim_lsp').default_capabilities()
-        else
-            capabilities = vim.lsp.protocol.make_client_capabilities()
-        end
+        capabilities.textDocument.completion.completionItem = {
+            documentationFormat = { "markdown", "plaintext" },
+            snippetSupport = true,
+            preselectSupport = true,
+            insertReplaceSupport = true,
+            labelDetailsSupport = true,
+            deprecatedSupport = true,
+            commitCharactersSupport = true,
+            tagSupport = { valueSet = { 1 } },
+            resolveSupport = {
+                properties = {
+                    "documentation",
+                    "detail",
+                    "additionalTextEdits",
+                },
+            },
+        }
 
         local config = {
             capabilities = capabilities,
