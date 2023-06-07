@@ -1,5 +1,9 @@
 local M = {}
 
+M.lsp = {
+    auto_format = true,
+}
+
 M.vim = {
     opt = {
         autowrite = true,           -- Enable auto write

@@ -89,7 +89,6 @@ local M = {
             'hrsh7th/nvim-cmp',
             'folke/neodev.nvim',
             'ray-x/lsp_signature.nvim',
-            'hrsh7th/cmp-nvim-lsp-signature-help'
         },
         opts = require('core.plugins.opts.nvim-lspconfig'),
         config = require('core.plugins.config.nvim-lspconfig')

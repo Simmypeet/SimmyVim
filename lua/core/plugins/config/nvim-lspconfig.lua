@@ -77,6 +77,16 @@ local M = function(_, opts)
                         function() vim.lsp.buf.format({ async = true }) end,
                         { buffer = buffer, desc = 'Format' }
                     )
+
+                    if vim.g.simmy.auto_format then
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            group = utils.autogroup("lsp_formatting"),
+                            buffer = buffer,
+                            callback = function()
+                                vim.lsp.buf.format({ bufnr = buffer })
+                            end,
+                        })
+                    end
                 end
 
                 vim.keymap.set(
