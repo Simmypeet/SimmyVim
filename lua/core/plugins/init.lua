@@ -3,6 +3,7 @@ local M = {
     {
         "nvim-tree/nvim-tree.lua",
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+        commit = 'f5d970d4506f385b29534252d8c15a782fa53034',
         keys = require('core.plugins.keys.nvim-tree'),
         opts = require('core.plugins.opts.nvim-tree'),
         config = require('core.plugins.config.nvim-tree')
@@ -12,14 +13,15 @@ local M = {
     {
         "folke/which-key.nvim",
         lazy = false,
+        version = "^1.4.3",
         config = require('core.plugins.config.which-key')
     },
 
     -- treesitter syntax highlighting
     {
         'nvim-treesitter/nvim-treesitter',
-        version = false,
         build = ':TSUpdate',
+        version = "^0.9.0",
         event = { 'BufReadPost', 'BufNewFile' },
         opts = require('core.plugins.opts.nvim-treesitter'),
         config = require('core.plugins.config.nvim-treesitter')
@@ -29,6 +31,7 @@ local M = {
     {
         'linrongbin16/lsp-progress.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
+        commit = '1cf6b32c27e2288712031ca8a5751529707541bd',
         opts = require('core.plugins.opts.lsp-progress'),
         config = require('core.plugins.config.lsp-progress')
     },
@@ -44,6 +47,7 @@ local M = {
     {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
+        version = "^2.20.6",
         keys = require('core.plugins.keys.nvim-notify'),
         opts = require('core.plugins.opts.nvim-notify'),
         config = require('core.plugins.config.nvim-notify')
@@ -54,8 +58,9 @@ local M = {
         'nvim-telescope/telescope.nvim',
         cmd = { 'Telescope' },
         dependencies = {
-            'nvim-lua/plenary.nvim'
+            { 'nvim-lua/plenary.nvim', version = "^0.1.3" }
         },
+        version = "^0.1.1",
         opts = require('core.plugins.opts.telescope'),
         keys = require('core.plugins.keys.telescope'),
         config = require('core.plugins.config.telescope')
@@ -81,7 +86,7 @@ local M = {
     -- lspconfig
     {
         'neovim/nvim-lspconfig',
-        commit = '8356319af6e8012a5797b647e946b377d1ba3d9c',
+        commit = '6b955189e6efb652eb446a2eb42f3eb33b44333e',
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             'williamboman/mason.nvim',
@@ -100,6 +105,7 @@ local M = {
         dependencies = {
             'linrongbin16/lsp-progress.nvim'
         },
+        commit = '8912bea65de93a56b1f70cdb7c3c26f9cce30394',
         event = "VeryLazy",
         opts = require('core.plugins.opts.lualine'),
     },
@@ -107,6 +113,7 @@ local M = {
     -- lsp symbol navigation for lualine
     {
         "SmiteshP/nvim-navic",
+        commit = '15704c607569d6c5cfeab486d3ef9459645a70ce',
         lazy = true,
         init = require('core.plugins.init.nvim-navic'),
         opts = require('core.plugins.opts.nvim-naivc'),
@@ -122,6 +129,7 @@ local M = {
     {
         "akinsho/bufferline.nvim",
         event = "VeryLazy",
+        version = '^4.1.0',
         keys = require('core.plugins.keys.bufferline'),
         opts = require('core.plugins.opts.bufferline'),
     },
@@ -129,6 +137,7 @@ local M = {
     -- buffer remove
     {
         "echasnovski/mini.bufremove",
+        version = "^0.9.0",
         lazy = false,
         keys = require('core.plugins.keys.mini-bufremove'),
     },
@@ -138,6 +147,7 @@ local M = {
     {
         'hrsh7th/nvim-cmp',
         lazy = false,
+        commit = '3874e09e80f5fd97ae941442f1dc433317298ae9',
         dependencies = {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
@@ -159,6 +169,7 @@ local M = {
     -- scroll bar
     {
         'petertriho/nvim-scrollbar',
+        commit = '35f99d559041c7c0eff3a41f9093581ceea534e8',
         event = { 'BufRead' },
         opts = require('core.plugins.opts.nvim-scrollbar'),
     },
@@ -167,6 +178,7 @@ local M = {
     {
         'lewis6991/gitsigns.nvim',
         event = { 'BufRead' },
+        version = "^0.6",
         opts = require('core.plugins.opts.gitsigns'),
         config = require('core.plugins.config.gitsigns'),
     },
@@ -174,6 +186,7 @@ local M = {
     -- symbols outline
     {
         'stevearc/aerial.nvim',
+        commit = 'aff1bb8fecff83d3e3a2d544c4d4e6d65718bd19',
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
             'nvim-tree/nvim-web-devicons'
@@ -194,6 +207,7 @@ local M = {
     -- terminal emulator
     {
         'akinsho/toggleterm.nvim',
+        version = "^2.7.0",
         keys = require('core.plugins.keys.toggleterm'),
         opts = require('core.plugins.opts.toggleterm'),
         config = require('core.plugins.config.toggleterm'),
@@ -204,6 +218,7 @@ local M = {
         "utilyre/barbecue.nvim",
         -- branch = "fix/E36",
         event = { "BufReadPost" },
+        version = "^1.2.0",
         dependencies = {
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons",
@@ -215,6 +230,7 @@ local M = {
     -- dap
     {
         "mfussenegger/nvim-dap",
+        version = "^0.6.0",
         dependencies = {
             {
                 "rcarriga/nvim-dap-ui",

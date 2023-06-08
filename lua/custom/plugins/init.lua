@@ -79,6 +79,11 @@ local M = {
     {
         "nyoom-engineering/oxocarbon.nvim",
         lazy = false
+    },
+
+    {
+        'rmehri01/onenord.nvim',
+        lazy = false,
     }
 }
 

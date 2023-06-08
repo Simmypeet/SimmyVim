@@ -7,6 +7,16 @@ local M = function(_, opts)
                 { buffer = args.buf, desc = "toggle symbol outlines" })
         end,
     })
+
+    local utils = require('core.utils')
+    utils.set_hl(function()
+        local visual = utils.get_hlgroup('Visual')
+        return {
+            ['AerialGuide'] = {
+                fg = visual.bg,
+            }
+        }
+    end)
 end
 
 return M
