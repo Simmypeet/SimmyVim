@@ -40,7 +40,13 @@ local M = {
         lazy = false,
     },
 
-    -- one dark theme
+    -- leap
+    {
+        "ggandor/leap.nvim",
+        dependencies = { 'tpope/vim-repeat' },
+        keys = require('custom.plugins.keys.leap'),
+    },
+
     {
         'navarasu/onedark.nvim',
         lazy = false,
@@ -48,7 +54,6 @@ local M = {
         config = require('custom.plugins.config.onedark')
     },
 
-    -- tundra theme
     {
         'sam4llis/nvim-tundra',
         lazy = false,
@@ -56,7 +61,6 @@ local M = {
         config = require('custom.plugins.config.nvim-tundra')
     },
 
-    -- one monokai
     {
         'cpea2506/one_monokai.nvim',
         lazy = false,

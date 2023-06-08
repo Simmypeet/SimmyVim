@@ -10,6 +10,13 @@ local M = {
             diagnostics = {
                 disabled = { "unresolved-proc-macro" }
             },
+            workspace = {
+                ignoreFolders = {
+                    "$HOME",
+                    "$HOME/.cargo/**",
+                    "$HOME/.rustup/**"
+                }
+            }
         }
     }
 }

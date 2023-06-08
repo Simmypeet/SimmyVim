@@ -40,7 +40,7 @@ M.initialize_options = function()
 
     local final = vim.tbl_deep_extend('force', default_options, user_options)
 
-    vim.g.simmy = final
+    Simmy = final
 
     if final.vim ~= nil then
         for scope, table in pairs(final.vim) do

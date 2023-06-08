@@ -13,7 +13,7 @@ local M = function(_, opts)
     local diagnostic_float = function()
         vim.diagnostic.open_float({
             focus = false,
-            border = utils.border("FloatBorder")
+            border = false,
         })
     end
 
@@ -78,7 +78,7 @@ local M = function(_, opts)
                         { buffer = buffer, desc = 'Format' }
                     )
 
-                    if vim.g.simmy.auto_format then
+                    if Simmy.lsp.auto_format then
                         vim.api.nvim_create_autocmd("BufWritePre", {
                             group = utils.autogroup("lsp_formatting"),
                             buffer = buffer,
@@ -204,13 +204,13 @@ local M = function(_, opts)
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
         vim.lsp.handlers.hover, {
-            border = utils.border('FloatBorder'),
+            border = false,
             silent = true,
         }
     )
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
         vim.lsp.handlers.signature_help, {
-            border = utils.border('FloatBorder'),
+            border = false,
             silent = true,
         }
     )
