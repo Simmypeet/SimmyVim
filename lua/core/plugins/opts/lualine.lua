@@ -58,7 +58,8 @@ local M = function()
             },
             lualine_z = {
                 function()
-                    return "  " .. os.date("%R")
+                    local current_dir = vim.fn.expand("%:p:h")
+                    return "  ~ " .. current_dir .. " "
                 end,
             },
         },
