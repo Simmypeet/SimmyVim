@@ -58,8 +58,16 @@ local M = function()
             },
             lualine_z = {
                 function()
-                    local current_dir = vim.fn.expand("%:p:h")
-                    return "  ~ " .. current_dir .. " "
+                    -- get the name of the current directory (tail path)
+                    local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+                    local prefix = "  ~ ";
+
+                    if dir_name == "" then
+                        dir_name = vim.fn.expand("%")
+                        prefix = "  "
+                    end
+
+                    return prefix .. dir_name
                 end,
             },
         },

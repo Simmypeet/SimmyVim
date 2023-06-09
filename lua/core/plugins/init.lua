@@ -3,7 +3,7 @@ local M = {
     {
         "nvim-tree/nvim-tree.lua",
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-        commit = 'f5d970d4506f385b29534252d8c15a782fa53034',
+        version = false,
         keys = require('core.plugins.keys.nvim-tree'),
         opts = require('core.plugins.opts.nvim-tree'),
         config = require('core.plugins.config.nvim-tree')
@@ -147,12 +147,12 @@ local M = {
     {
         'hrsh7th/nvim-cmp',
         lazy = false,
-        commit = '3874e09e80f5fd97ae941442f1dc433317298ae9',
+        commit = '6f118169af14c0f92d3f6062cd6f6b8b12361b3a',
         dependencies = {
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp',
-            'L3MON4D3/LuaSnip',
+            { 'hrsh7th/cmp-buffer',   commit = '3022dbc9166796b644a841a02de8dd1cc1d311fa' },
+            { 'hrsh7th/cmp-path',     commit = '91ff86cd9c29299a64f968ebb45846c485725f23', },
+            { 'hrsh7th/cmp-nvim-lsp', commit = '78924d1d677b29b3d1fe429864185341724ee5a2' },
+            { 'L3MON4D3/LuaSnip',     version = "^1.2.1" },
 
             -- auto pairs
             {

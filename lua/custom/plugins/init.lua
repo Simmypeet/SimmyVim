@@ -34,24 +34,11 @@ local M = {
         config = require('custom.plugins.config.monokai-pro')
     },
 
-    -- discord rich presence
-    {
-        'andweeb/presence.nvim',
-        lazy = false,
-    },
-
     -- leap
     {
         "ggandor/leap.nvim",
         dependencies = { 'tpope/vim-repeat' },
         keys = require('custom.plugins.keys.leap'),
-    },
-
-    {
-        'navarasu/onedark.nvim',
-        lazy = false,
-        opts = require('custom.plugins.opts.onedark'),
-        config = require('custom.plugins.config.onedark')
     },
 
     {
@@ -84,6 +71,11 @@ local M = {
     {
         'rmehri01/onenord.nvim',
         lazy = false,
+    },
+
+    {
+        'olimorris/onedarkpro.nvim',
+        lazy = false
     }
 }
 
