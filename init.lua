@@ -11,3 +11,5 @@ require('core.mappings')
 
 -- call the polish function
 pcall(require, 'custom.polish')
+
+vim.loader.enable();

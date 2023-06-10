@@ -20,7 +20,7 @@ M.initialize_options = function()
         vim.g["loaded_" .. provider .. "_provider"] = 0
     end
 
-    vim.opt.shortmess:append({ W = true, I = true, c = true })
+    vim.opt.shortmess = vim.opt.shortmess + { c = true }
     if vim.fn.has("nvim-0.9.0") == 1 then
         vim.opt.splitkeep = "screen"
         vim.opt.shortmess:append({ C = true })

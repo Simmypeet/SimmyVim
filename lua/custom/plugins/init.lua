@@ -7,6 +7,12 @@ local M = {
         config = require('custom.plugins.config.copilot')
     },
 
+    -- rust-tools
+    {
+        'simrat39/rust-tools.nvim',
+        ft = { 'rust' },
+    },
+
     -- better escaping shortcuts
     {
         "max397574/better-escape.nvim",
@@ -76,6 +82,11 @@ local M = {
     {
         'olimorris/onedarkpro.nvim',
         lazy = false
+    },
+
+    {
+        'EdenEast/nightfox.nvim',
+        lazy = false,
     }
 }
 
