@@ -31,7 +31,7 @@ local M = {
         end,
         offsets = {
             {
-                filetype = "NvimTree",
+                filetype = "neo-tree",
                 text = "EXPLORER",
                 highlight = "SimmyBufferLineOffset",
                 text_align = "center",
