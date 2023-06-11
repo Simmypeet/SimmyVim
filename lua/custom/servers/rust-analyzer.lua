@@ -5,7 +5,7 @@ local M = function(config)
                 auto = false
             }
         },
-        servers = {
+        server = {
             capabilities = config.capabilities,
             settings = {
                 ['rust-analyzer'] = {
@@ -19,7 +19,7 @@ local M = function(config)
                         disabled = { "unresolved-proc-macro" }
                     },
                     cargo = {
-                        features = 'all'
+                        features = 'all',
                     },
                     workspace = {
                         ignoreFolders = {
