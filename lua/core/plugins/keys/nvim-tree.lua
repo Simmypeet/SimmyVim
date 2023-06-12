@@ -2,7 +2,7 @@ local M = {
     {
         "<leader>e",
         "<cmd>NvimTreeToggle<cr>",
-        desc = "Dismiss all Notifications",
+        desc = "Toggle File Explorer",
     }
 }
 

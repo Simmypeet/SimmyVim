@@ -16,6 +16,7 @@ local M = {
         side = "left",
         width = 30,
         preserve_window_proportions = true,
+        signcolumn = "yes",
     },
     git = {
         enable = true,
@@ -31,6 +32,7 @@ local M = {
     },
     diagnostics = {
         enable = true,
+        show_on_dirs = true,
     },
     on_attach = function(bufnr)
         local api = require('nvim-tree.api')

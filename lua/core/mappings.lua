@@ -16,8 +16,3 @@ vim.keymap.set('n', '<C-\\>', '<CMD>vsplit<CR>', { desc = 'Vertical split' })
 
 -- disable q recording
 vim.keymap.set({ 't', 'n' }, 'q', '<NOP>', { desc = 'Disable q recording' })
-
-vim.keymap.set({ 't', 'n' }, '<C-Left>', '<CMD>vertical resize -2<CR>', { desc = 'Resize window left' })
-vim.keymap.set({ 't', 'n' }, '<C-Right>', '<CMD>vertical resize +2<CR>', { desc = 'Resize window right' })
-vim.keymap.set({ 't', 'n' }, '<C-Up>', '<CMD>resize -2<CR>', { desc = 'Resize window up' })
-vim.keymap.set({ 't', 'n' }, '<C-Down>', '<CMD>resize +2<CR>', { desc = 'Resize window down' })

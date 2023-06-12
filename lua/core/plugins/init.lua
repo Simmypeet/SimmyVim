@@ -1,4 +1,4 @@
-local M = { -- file explorer
+local M = {
     -- file explorer
     {
         "nvim-tree/nvim-tree.lua",
@@ -142,6 +142,26 @@ local M = { -- file explorer
     },
 
 
+    -- snippet engine
+    {
+        'L3MON4D3/LuaSnip',
+        version = "^1.2.1",
+        dependencies = {
+            "rafamadriz/friendly-snippets"
+        },
+        opts = require('core.plugins.opts.luasnip'),
+        config = require('core.plugins.config.luasnip'),
+    },
+
+
+    -- auto pairs
+    {
+        "windwp/nvim-autopairs",
+        lazy = false,
+        opts = require('core.plugins.opts.nvim-autopairs'),
+        config = require('core.plugins.config.nvim-autopairs')
+    },
+
     -- completion suggestions
     {
         'hrsh7th/nvim-cmp',
@@ -151,15 +171,8 @@ local M = { -- file explorer
             { 'hrsh7th/cmp-buffer',   commit = '3022dbc9166796b644a841a02de8dd1cc1d311fa' },
             { 'hrsh7th/cmp-path',     commit = '91ff86cd9c29299a64f968ebb45846c485725f23', },
             { 'hrsh7th/cmp-nvim-lsp', commit = '78924d1d677b29b3d1fe429864185341724ee5a2' },
-            { 'L3MON4D3/LuaSnip',     version = "^1.2.1" },
-
-            -- auto pairs
-            {
-                "windwp/nvim-autopairs",
-                lazy = false,
-                opts = require('core.plugins.opts.nvim-autopairs'),
-                config = require('core.plugins.config.nvim-autopairs')
-            },
+            'L3MON4D3/LuaSnip',
+            'windwp/nvim-autopairs'
         },
         opts = require('core.plugins.opts.nvim-cmp'),
         config = require('core.plugins.config.nvim-cmp')
@@ -242,7 +255,14 @@ local M = { -- file explorer
                 config = require('core.plugins.config.cmp-dap')
             },
         },
-    }
+    },
+
+    -- smart split
+    {
+        "mrjones2014/smart-splits.nvim",
+        opts = require('core.plugins.opts.smart-splits'),
+        keys = require('core.plugins.keys.smart-splits'),
+    },
 }
 
 return M
