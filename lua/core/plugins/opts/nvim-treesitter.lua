@@ -4,8 +4,7 @@ local M = {
         additional_vim_regex_highlighting = false,
         enable = true,
     },
-    indent = { enable = false },
-    incremental_selection = { enable = true },
+    indent = { enable = true },
     auto_install = true,
 }
 

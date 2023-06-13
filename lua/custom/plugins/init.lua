@@ -32,14 +32,6 @@ local M = {
         config = require('custom.plugins.config.catppuccin')
     },
 
-    -- monokai pro
-    {
-        "loctvl842/monokai-pro.nvim",
-        lazy = false,
-        opts = require('custom.plugins.opts.monokai-pro'),
-        config = require('custom.plugins.config.monokai-pro')
-    },
-
     -- leap
     {
         "ggandor/leap.nvim",
@@ -55,33 +47,8 @@ local M = {
     },
 
     {
-        'cpea2506/one_monokai.nvim',
-        lazy = false,
-    },
-
-    {
         'tiagovla/tokyodark.nvim',
         lazy = false,
-    },
-
-    {
-        'sainnhe/sonokai',
-        lazy = false,
-    },
-
-    {
-        "nyoom-engineering/oxocarbon.nvim",
-        lazy = false
-    },
-
-    {
-        'rmehri01/onenord.nvim',
-        lazy = false,
-    },
-
-    {
-        'olimorris/onedarkpro.nvim',
-        lazy = false
     },
 
     {

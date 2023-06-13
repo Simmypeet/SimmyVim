@@ -109,15 +109,6 @@ local M = {
         opts = require('core.plugins.opts.lualine'),
     },
 
-    -- lsp symbol navigation for lualine
-    {
-        "SmiteshP/nvim-navic",
-        commit = '15704c607569d6c5cfeab486d3ef9459645a70ce',
-        lazy = true,
-        init = require('core.plugins.init.nvim-navic'),
-        opts = require('core.plugins.opts.nvim-naivc'),
-    },
-
     -- dressing ui
     {
         "stevearc/dressing.nvim",
@@ -223,20 +214,6 @@ local M = {
         keys = require('core.plugins.keys.toggleterm'),
         opts = require('core.plugins.opts.toggleterm'),
         config = require('core.plugins.config.toggleterm'),
-    },
-
-    -- symbol outline
-    {
-        "utilyre/barbecue.nvim",
-        -- branch = "fix/E36",
-        event = { "BufReadPost" },
-        version = "^1.2.0",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons",
-        },
-        opts = require('core.plugins.opts.barbecue'),
-        config = require('core.plugins.config.barbecue'),
     },
 
     -- dap

@@ -30,10 +30,6 @@ local M = {
             resize_window = true,
         },
     },
-    diagnostics = {
-        enable = true,
-        show_on_dirs = true,
-    },
     on_attach = function(bufnr)
         local api = require('nvim-tree.api')
 
