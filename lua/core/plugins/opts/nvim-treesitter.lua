@@ -4,7 +4,7 @@ local M = {
         additional_vim_regex_highlighting = false,
         enable = true,
     },
-    indent = { enable = true },
+    indent = { enable = false },
     auto_install = true,
 }
 
