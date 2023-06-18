@@ -1,20 +1,13 @@
 local M = function()
     local util = require('core.utils')
 
-    -- refresh lualine
-    vim.cmd([[
-       augroup lualine_augroup
-          autocmd!
-           autocmd User LspProgressStatusUpdated lua require("lualine").refresh()
-       augroup END
-    ]])
-
     return {
         options = {
             theme = "auto",
             globalstatus = true,
             disabled_filetypes = { statusline = { "dashboard", "alpha" } },
-            section_separators = { left = "", right = "" },
+            section_separators = { left = "▌", right = "▐" },
+            component_separators = { left = "", right = "" },
         },
         sections = {
             lualine_a = { "mode" },
@@ -54,21 +47,40 @@ local M = function()
                 },
             },
             lualine_y = {
-                require("lsp-progress").progress,
+                -- show current active lsp clients
+                {
+                    function()
+                        local clients = vim.lsp.get_active_clients()
+                        if next(clients) == nil then
+                            return ""
+                        end
+                        local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+                        local buf_clients = {}
+                        for _, client in ipairs(clients) do
+                            local filetypes = client.config.filetypes
+                            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                                table.insert(buf_clients, client.name)
+                            end
+                        end
+                        return table.concat(buf_clients, " ")
+                    end,
+                    icon = "  ~",
+                }
             },
             lualine_z = {
-                function()
-                    -- get the name of the current directory (tail path)
-                    local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-                    local prefix = "  ~ ";
+                {
+                    function()
+                        -- get the name of the current directory (tail path)
+                        local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
-                    if dir_name == "" then
-                        dir_name = vim.fn.expand("%")
-                        prefix = "  "
-                    end
+                        if dir_name == "" then
+                            dir_name = vim.fn.expand("%")
+                        end
 
-                    return prefix .. dir_name
-                end,
+                        return dir_name
+                    end,
+                    icon = "  ~",
+                }
             },
         },
         extensions = { "neo-tree", "lazy" },

@@ -80,7 +80,6 @@ local M = function(_, opts)
 
                     if Simmy.lsp.auto_format then
                         vim.api.nvim_create_autocmd("BufWritePre", {
-                            group = utils.autogroup("lsp_formatting"),
                             buffer = buffer,
                             callback = function()
                                 vim.lsp.buf.format({ bufnr = buffer })
@@ -139,15 +138,6 @@ local M = function(_, opts)
                     '<leader>ld',
                     diagnostic_float,
                     { buffer = buffer, desc = 'Float diagnostics' }
-                )
-
-                vim.api.nvim_create_autocmd(
-                    { 'CursorHold' },
-                    {
-                        buffer = buffer,
-                        group = utils.autogroup('lsp_hover'),
-                        callback = diagnostic_float
-                    }
                 )
 
                 if client.server_capabilities.hoverProvider then

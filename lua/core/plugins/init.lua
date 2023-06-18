@@ -27,15 +27,6 @@ local M = {
         config = require('core.plugins.config.nvim-treesitter')
     },
 
-    -- lsp-progress
-    {
-        'linrongbin16/lsp-progress.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        commit = '1cf6b32c27e2288712031ca8a5751529707541bd',
-        opts = require('core.plugins.opts.lsp-progress'),
-        config = require('core.plugins.config.lsp-progress')
-    },
-
     -- indent guides for Neovim
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -69,7 +60,7 @@ local M = {
     -- mason lsp
     {
         'williamboman/mason.nvim',
-        version = "^1",
+        version = "^1.2.1",
         cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
         opts = require('core.plugins.opts.mason'),
         config = require('core.plugins.config.mason')
@@ -78,7 +69,7 @@ local M = {
     -- mason lsp config
     {
         'williamboman/mason-lspconfig.nvim',
-        version = "^1.1",
+        version = "^1.7.1",
         opts = require('core.plugins.opts.mason-lspconfig'),
         config = require('core.plugins.config.mason-lspconfig')
     },
@@ -86,12 +77,11 @@ local M = {
     -- lspconfig
     {
         'neovim/nvim-lspconfig',
-        commit = '6b955189e6efb652eb446a2eb42f3eb33b44333e',
+        commit = '570aae82f8c6bc15fb6e559ed7d5a3fd85374329',
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-            'hrsh7th/nvim-cmp',
             'folke/neodev.nvim',
         },
         opts = require('core.plugins.opts.nvim-lspconfig'),
@@ -101,9 +91,6 @@ local M = {
     -- statusline
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = {
-            'linrongbin16/lsp-progress.nvim'
-        },
         commit = '8912bea65de93a56b1f70cdb7c3c26f9cce30394',
         event = "VeryLazy",
         opts = require('core.plugins.opts.lualine'),
@@ -148,7 +135,6 @@ local M = {
     -- auto pairs
     {
         "windwp/nvim-autopairs",
-        lazy = false,
         opts = require('core.plugins.opts.nvim-autopairs'),
         config = require('core.plugins.config.nvim-autopairs')
     },
@@ -156,7 +142,7 @@ local M = {
     -- completion suggestions
     {
         'hrsh7th/nvim-cmp',
-        lazy = false,
+        event = "InsertEnter",
         commit = '6f118169af14c0f92d3f6062cd6f6b8b12361b3a',
         dependencies = {
             { 'hrsh7th/cmp-buffer',   commit = '3022dbc9166796b644a841a02de8dd1cc1d311fa' },
@@ -216,6 +202,7 @@ local M = {
         config = require('core.plugins.config.toggleterm'),
     },
 
+    --[[
     -- dap
     {
         "mfussenegger/nvim-dap",
@@ -233,6 +220,7 @@ local M = {
             },
         },
     },
+    --]]
 
     -- smart split
     {
