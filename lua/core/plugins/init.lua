@@ -82,6 +82,7 @@ local M = {
         dependencies = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
+            'stevearc/aerial.nvim',
             'folke/neodev.nvim',
         },
         opts = require('core.plugins.opts.nvim-lspconfig'),
@@ -107,6 +108,9 @@ local M = {
         "akinsho/bufferline.nvim",
         event = "VeryLazy",
         version = '^4.1.0',
+        dependencies = {
+            "echasnovski/mini.bufremove"
+        },
         keys = require('core.plugins.keys.bufferline'),
         opts = require('core.plugins.opts.bufferline'),
     },
@@ -115,7 +119,6 @@ local M = {
     {
         "echasnovski/mini.bufremove",
         version = "^0.9.0",
-        lazy = false,
         keys = require('core.plugins.keys.mini-bufremove'),
     },
 
@@ -143,7 +146,7 @@ local M = {
     {
         'hrsh7th/nvim-cmp',
         event = "InsertEnter",
-        commit = '6f118169af14c0f92d3f6062cd6f6b8b12361b3a',
+        version = '^0.0.1',
         dependencies = {
             { 'hrsh7th/cmp-buffer',   commit = '3022dbc9166796b644a841a02de8dd1cc1d311fa' },
             { 'hrsh7th/cmp-path',     commit = '91ff86cd9c29299a64f968ebb45846c485725f23', },
@@ -180,7 +183,6 @@ local M = {
             'nvim-treesitter/nvim-treesitter',
             'nvim-tree/nvim-web-devicons'
         },
-        event = { 'BufRead' },
         opts = require('core.plugins.opts.aerial'),
         config = require('core.plugins.config.aerial')
     },

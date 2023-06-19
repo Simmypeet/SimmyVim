@@ -145,8 +145,7 @@ local M = function(_, opts)
                         'n',
                         'K',
                         function() vim.lsp.buf.hover() end,
-                        { buffer = buffer, desc = 'Hover' }
-                    )
+                        { buffer = buffer, desc = 'Hover' })
                 end
 
                 if client.server_capabilities.definitionProvider then
