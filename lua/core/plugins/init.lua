@@ -83,6 +83,7 @@ local M = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
             'stevearc/aerial.nvim',
+            'j-hui/fidget.nvim',
             'folke/neodev.nvim',
         },
         opts = require('core.plugins.opts.nvim-lspconfig'),
@@ -230,6 +231,14 @@ local M = {
         opts = require('core.plugins.opts.smart-splits'),
         keys = require('core.plugins.keys.smart-splits'),
     },
+
+    -- lsp progress display
+    {
+        'j-hui/fidget.nvim',
+        tag = 'legacy',
+        opts = require('core.plugins.opts.fidget'),
+        config = require('core.plugins.config.fidget'),
+    }
 }
 
 return M
