@@ -56,6 +56,37 @@ local M = {
         lazy = false,
     },
 
+    --[[
+    {
+        'andweeb/presence.nvim',
+        lazy = false,
+        opts = require('custom.plugins.opts.presence'),
+        config = require('custom.plugins.config.presence'),
+        cond = function()
+            return false
+        end
+    },
+    ]] --
+
+    {
+        'navarasu/onedark.nvim',
+        lazy = false,
+    },
+
+    {
+        'folke/tokyonight.nvim',
+        lazy = false
+    },
+
+    {
+        'Mofiqul/vscode.nvim',
+        lazy = false,
+    },
+
+    {
+        "loctvl842/monokai-pro.nvim",
+        lazy = false,
+    }
 }
 
 return M

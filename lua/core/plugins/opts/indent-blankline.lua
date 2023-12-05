@@ -1,34 +1,25 @@
 local M = {
-    char = "▏",
-    context_char = "▏",
-    show_end_of_line = false,
-    space_char_blankline = " ",
-    show_current_context = false,
-    show_current_context_start = false,
-    use_treesitter = false,
-    filetype_exclude = {
-        "help",
-        "startify",
-        "dashboard",
-        "packer",
-        "neogitstatus",
-        "NvimTree",
-        "Trouble",
-        "alpha",
-        "neo-tree",
+    indent = { char = "▏" },
+    exclude = {
+        filetypes = {
+            "help",
+            "startify",
+            "dashboard",
+            "packer",
+            "neogitstatus",
+            "NvimTree",
+            "Trouble",
+            "alpha",
+            "neo-tree",
+        },
+        buftypes = {
+            "terminal",
+            "nofile",
+        }
     },
-    buftype_exclude = {
-        "terminal",
-        "nofile",
-    },
-    -- char_highlight_list = {
-    --   "IndentBlanklineIndent1",
-    --   "IndentBlanklineIndent2",
-    --   "IndentBlanklineIndent3",
-    --   "IndentBlanklineIndent4",
-    --   "IndentBlanklineIndent5",
-    --   "IndentBlanklineIndent6",
-    -- },
+    scope = {
+        enabled = false,
+    }
 }
 
 return M

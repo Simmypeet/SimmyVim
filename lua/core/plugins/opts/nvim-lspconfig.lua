@@ -2,7 +2,7 @@ local M = {
     -- options for vim.diagnostic.config()
     diagnostics = {
         underline = true,
-        update_in_insert = false,
+        update_in_insert = true,
         virtual_text = {
             spacing = 4,
             source = "if_many",
@@ -22,7 +22,7 @@ local M = {
     },
 
     format_on_save = true,
-    semantic_highlighting = false,
+    semantic_highlighting = true,
 }
 
 return M

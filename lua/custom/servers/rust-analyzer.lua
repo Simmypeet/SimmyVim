@@ -7,6 +7,7 @@ local M = function(config)
         },
         server = {
             capabilities = config.capabilities,
+            root_dir = config.root_dir,
             settings = {
                 ['rust-analyzer'] = {
                     checkOnSave = {

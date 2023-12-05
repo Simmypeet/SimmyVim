@@ -2,7 +2,6 @@ local M = function(_, opts)
     -- set icons for diagnostics
     local icons = require('core.icons')
     local utils = require('core.utils')
-
     for name, icon in pairs(icons.diagnostics) do
         name = "DiagnosticSign" .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
@@ -31,6 +30,7 @@ local M = function(_, opts)
 
                     -- if there are no buffers associated with the client, shut it down
                     if #buffers == 0 then
+                        vim.lsp.diagnostic.reset()
                         vim.lsp.stop_client(client.id)
                     end
                 end
@@ -74,7 +74,10 @@ local M = function(_, opts)
                     vim.keymap.set(
                         'n',
                         '<leader>lf',
-                        function() vim.lsp.buf.format({ async = true }) end,
+                        function()
+                            vim.lsp.buf.format({ async = true })
+                            vim.diagnostic.enable(0)
+                        end,
                         { buffer = buffer, desc = 'Format' }
                     )
 
@@ -83,6 +86,7 @@ local M = function(_, opts)
                             buffer = buffer,
                             callback = function()
                                 vim.lsp.buf.format({ bufnr = buffer })
+                                vim.diagnostic.enable(0)
                             end,
                         })
                     end
@@ -253,6 +257,12 @@ local M = function(_, opts)
 
         local config = {
             capabilities = capabilities,
+            -- the root dir must be the same as the current working dir
+            -- otherwise, the lsp server will not be able to find the project root
+            root_dir = function()
+                local cwd = vim.fn.getcwd()
+                return cwd
+            end,
         }
 
         if ok then

@@ -31,6 +31,8 @@ local M = {
     {
         "lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPost", "BufNewFile" },
+        main = "ibl",
+        version = "^3.3.7",
         opts = require('core.plugins.opts.indent-blankline'),
     },
 
