@@ -86,6 +86,17 @@ local M = {
     {
         "loctvl842/monokai-pro.nvim",
         lazy = false,
+    },
+
+    {
+        "projekt0n/github-nvim-theme",
+        lazy = false,
+    },
+
+    {
+        "Civitasv/cmake-tools.nvim",
+        ft = { "cmake", "cpp", "cuda", "c", "objc", "objcpp" },
+        config = require('custom.plugins.config.cmake-tools'),
     }
 }
 

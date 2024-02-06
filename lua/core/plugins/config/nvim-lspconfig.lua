@@ -16,28 +16,6 @@ local M = function(_, opts)
         })
     end
 
-    -- shut down the client if the deleted buffer was the last one associated with it
-    vim.api.nvim_create_autocmd("BufDelete", {
-        group = utils.autogroup("automatic_lsp_shutdown"),
-        callback = function(_)
-            vim.schedule(function()
-                -- get all active clients
-                local clients = vim.lsp.get_active_clients()
-
-                -- look for clients with no associated buffer
-                for _, client in pairs(clients) do
-                    local buffers = vim.lsp.get_buffers_by_client_id(client.id)
-
-                    -- if there are no buffers associated with the client, shut it down
-                    if #buffers == 0 then
-                        vim.lsp.diagnostic.reset()
-                        vim.lsp.stop_client(client.id)
-                    end
-                end
-            end)
-        end,
-    })
-
     vim.api.nvim_create_autocmd(
         {
             "LspAttach"
@@ -142,6 +120,13 @@ local M = function(_, opts)
                     '<leader>ld',
                     diagnostic_float,
                     { buffer = buffer, desc = 'Float diagnostics' }
+                )
+
+                vim.keymap.set(
+                    'n',
+                    '<leader>li',
+                    '<CMD>LspInfo<CR>',
+                    { buffer = buffer, desc = 'Lsp information' }
                 )
 
                 if client.server_capabilities.hoverProvider then

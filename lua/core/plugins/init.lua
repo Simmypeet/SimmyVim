@@ -3,7 +3,7 @@ local M = {
     {
         "nvim-tree/nvim-tree.lua",
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-        version = false,
+        version = "^0.99.0",
         keys = require('core.plugins.keys.nvim-tree'),
         opts = require('core.plugins.opts.nvim-tree'),
         config = require('core.plugins.config.nvim-tree')
@@ -21,7 +21,7 @@ local M = {
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
-        version = "^0.9.0",
+        version = "^0.9.2",
         event = { 'BufReadPost', 'BufNewFile' },
         opts = require('core.plugins.opts.nvim-treesitter'),
         config = require('core.plugins.config.nvim-treesitter')
@@ -40,7 +40,7 @@ local M = {
     {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
-        version = "^2.20.6",
+        version = "^3.12.0",
         keys = require('core.plugins.keys.nvim-notify'),
         opts = require('core.plugins.opts.nvim-notify'),
         config = require('core.plugins.config.nvim-notify')
@@ -207,6 +207,14 @@ local M = {
         config = require('core.plugins.config.toggleterm'),
     },
 
+    -- lsp signature
+    {
+        'ray-/lsp_signature.nvim',
+        event = { "InsertEnter" },
+        config = require('core.plugins.config.lsp_signature'),
+        opts = require('core.plugins.opts.lsp_signature'),
+    },
+
     --[[
     -- dap
     {
@@ -237,7 +245,7 @@ local M = {
     -- lsp progress display
     {
         'j-hui/fidget.nvim',
-        tag = 'legacy',
+        version = "^1.1.0",
         opts = require('core.plugins.opts.fidget'),
         config = require('core.plugins.config.fidget'),
     }
