@@ -11,6 +11,10 @@ local M = {
         enable = true,
         update_root = false,
     },
+    diagnostics = {
+        show_on_dirs = true,
+        enable = true,
+    },
     view = {
         adaptive_size = true,
         side = "left",
@@ -44,6 +48,7 @@ local M = {
         root_folder_label = false,
         highlight_git = true,
         highlight_opened_files = "none",
+        highlight_diagnostics = true,
 
         indent_markers = {
             enable = true,

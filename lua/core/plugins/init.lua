@@ -106,18 +106,6 @@ local M = {
         lazy = false,
     },
 
-    -- bufferline
-    {
-        "akinsho/bufferline.nvim",
-        event = "VeryLazy",
-        version = '^4.1.0',
-        dependencies = {
-            "echasnovski/mini.bufremove"
-        },
-        keys = require('core.plugins.keys.bufferline'),
-        opts = require('core.plugins.opts.bufferline'),
-    },
-
     -- buffer remove
     {
         "echasnovski/mini.bufremove",
@@ -173,7 +161,7 @@ local M = {
     {
         'lewis6991/gitsigns.nvim',
         event = { 'BufRead' },
-        version = "^0.6",
+        version = "^0.7",
         opts = require('core.plugins.opts.gitsigns'),
         config = require('core.plugins.config.gitsigns'),
     },
@@ -209,7 +197,7 @@ local M = {
 
     -- lsp signature
     {
-        'ray-/lsp_signature.nvim',
+        'ray-x/lsp_signature.nvim',
         event = { "InsertEnter" },
         config = require('core.plugins.config.lsp_signature'),
         opts = require('core.plugins.opts.lsp_signature'),

@@ -94,9 +94,15 @@ local M = {
     },
 
     {
+        "diegoulloao/neofusion.nvim",
+        lazy = false,
+        config = true,
+    },
+
+    {
         "Civitasv/cmake-tools.nvim",
         ft = { "cmake", "cpp", "cuda", "c", "objc", "objcpp" },
-        config = require('custom.plugins.config.cmake-tools'),
+        opts = require('custom.plugins.opts.cmake-tools'),
     }
 }
 

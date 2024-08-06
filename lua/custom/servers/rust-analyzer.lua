@@ -10,9 +10,12 @@ local M = function(config)
             root_dir = config.root_dir,
             settings = {
                 ['rust-analyzer'] = {
+                    --[[
                     checkOnSave = {
                         command = "clippy"
                     },
+                    --]]
+
                     rustfmt = {
                         extraArgs = { "+nightly" }
                     },
